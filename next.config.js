@@ -6,6 +6,8 @@ module.exports = {
             };
         }
 
+        config.cache = false;
+
         config.module.rules.push({
             test: /\.(graphql|gql)$/,
             exclude: /node_modules/,

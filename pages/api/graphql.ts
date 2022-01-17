@@ -1,28 +1,39 @@
+import "reflect-metadata";
 import { ApolloServer } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { NextApiRequest, NextApiResponse } from "next";
 import { typeDefs } from "../../server/generated/graphql";
-import { HelloWorldResolvers } from "../../server/resolvers/HelloWorld";
+import { ApolloResolvers } from "../../server/resolvers";
+import { MikroORM } from "@mikro-orm/core";
+import microConfig from "../../server/mikro-orm.config";
 
-const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers: {
-        ...HelloWorldResolvers,
-    },
-    // @ts-ignore
-    playground: true,
-    introspection: true,
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-});
+async function createServer() {
+    const orm = await MikroORM.init(microConfig);
 
-const startServer = apolloServer.start();
+    return new ApolloServer({
+        typeDefs,
+        resolvers: ApolloResolvers,
+        // @ts-ignore
+        playground: true,
+        introspection: true,
+
+        context: ({ req, res }) => ({ req, res, em: orm.em }),
+        plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    });
+}
+
+const apolloServer = createServer();
+
+const startServer = apolloServer.then((server) => server.start());
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
     await startServer;
-    await apolloServer.createHandler({
+    const server = await apolloServer;
+
+    server.createHandler({
         path: "/api/graphql",
     })(req, res);
 }

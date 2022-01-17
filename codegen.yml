@@ -4,11 +4,16 @@ documents: ["./**/*.gql"]
 
 generates:
     ./client/generated/graphql.tsx:
+        config:
+            contextType: ../../@types/graphql#ApolloContext
         plugins:
             - "typescript"
             - "typescript-operations"
             - "typescript-react-apollo"
+
     ./server/generated/graphql.ts:
+        config:
+            contextType: ../../@types/graphql#ApolloContext
         plugins:
             - "typescript"
             - "typescript-resolvers"

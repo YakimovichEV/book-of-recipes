@@ -1,0 +1,8 @@
+type User {
+    email: String!
+    password: String!
+}
+
+extend type Query {
+    getUserList: [User]
+}
