@@ -1,0 +1,15 @@
+schema: ["./**/*.gql"]
+overwrite: true
+documents: ["./**/*.gql"]
+
+generates:
+    ./client/generated/graphql.tsx:
+        plugins:
+            - "typescript"
+            - "typescript-operations"
+            - "typescript-react-apollo"
+    ./server/generated/graphql.ts:
+        plugins:
+            - "typescript"
+            - "typescript-resolvers"
+            - "typescript-typedefs.js"

@@ -1,7 +1,11 @@
+/.vscode
 /dist
 /node_modules
 /build
 /.next
 .env
+.env.local
 yarn-error.log
 YARN.txt
+/client/generated
+/server/generated
