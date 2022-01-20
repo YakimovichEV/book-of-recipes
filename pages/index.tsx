@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "./Home";
 import {
     HelloDocument,
     HelloQuery,
@@ -8,6 +7,9 @@ import {
 import { addApolloState, initializeApollo } from "client/hocs/apollo/client";
 import { GetServerSideProps, NextPage } from "next";
 
+import Home from "./home";
+import Test from "./testPage";
+
 const Index: NextPage = () => {
     const { data } = useHelloQuery();
 
@@ -15,6 +17,7 @@ const Index: NextPage = () => {
         <div className="font-primaryFont text-2xl text-red-500">
             {data?.hello}
             <Home />
+            <Test />
         </div>
     );
 };

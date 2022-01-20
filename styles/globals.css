@@ -4,4 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base{@font-face{font-family: 'Montserrat'; source }} */
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    .primary-font {
+        @apply font-primaryFont;
+    }
+
+    .second-font {
+        @apply font-secondFont;
+    }
+
+    .logo-font {
+        @apply font-logoFont;
+    }
+
+    .text-shadow {
+        text-shadow: 7px 7px 7px black;
+    }
+
+    .text-shadow--light {
+        text-shadow: 3px 3px 3px black;
+    }
+
+    .extra-font-size {
+        font-size: 350px;
+    }
+}
