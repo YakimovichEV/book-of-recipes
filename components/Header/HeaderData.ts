@@ -21,11 +21,6 @@ export const HeaderData = [
     },
     {
         id: "s5",
-        title: "Profile",
-        path: "/profile",
-    },
-    {
-        id: "s6",
         title: "About",
         path: "/about",
     },
