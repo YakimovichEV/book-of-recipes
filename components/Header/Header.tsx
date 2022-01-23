@@ -4,8 +4,8 @@ import { useSession } from "next-auth/react";
 import { Spin as Hamburger } from "hamburger-react";
 
 import { Logo } from "../Logo/Logo";
-import { HeaderUser } from "components/Icons/HeaderUser/HeaderUser";
 import { HeaderData } from "./HeaderData";
+import { HeaderUserIcon } from "components/Icons/HeaderUserIcon/HeaderUserIcon";
 
 const headerClasses = {
     default:
@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
             <Link href={profileLink} passHref>
                 <a>
                     <span className="absolute top-1 right-14 z-10">
-                        <HeaderUser />
+                        <HeaderUserIcon />
                     </span>
                 </a>
             </Link>
