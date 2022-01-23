@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Spin as Hamburger } from "hamburger-react";
 
 import { Logo } from "../Logo/Logo";
+import { HeaderUser } from "components/Icons/HeaderUser/HeaderUser";
 import { HeaderData } from "./HeaderData";
 
 const headerClasses = {
@@ -15,10 +17,21 @@ const headerClasses = {
 export const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [sidebar, setSidebar] = useState(false);
+    const { data: session, status } = useSession();
 
     const showSidebar = () => {
         setSidebar((prevState) => !prevState);
     };
+
+    const profileLink = useMemo<"/profile" | "/auth">(() => {
+        if (session && status === "authenticated") {
+            // is logged in
+            return "/profile";
+        }
+
+        //not logged in or request is loading
+        return "/auth";
+    }, [session, status]);
 
     return (
         <div className="m-5 flex justify-between items-center relative">
@@ -27,7 +40,14 @@ export const Header: React.FC = () => {
                     <Logo />
                 </a>
             </Link>
-            <Link href="">
+            <Link href={profileLink} passHref>
+                <a>
+                    <span className="absolute top-1 right-14 z-10">
+                        <HeaderUser />
+                    </span>
+                </a>
+            </Link>
+            <Link href="" passHref>
                 <span
                     onClick={showSidebar}
                     className="absolute top-0 right-0 z-10 text-dijon"
@@ -47,8 +67,8 @@ export const Header: React.FC = () => {
                 }
             >
                 <ul className="w-full mt-5">
-                    <li className="flex justify-end items-center">
-                        <Link href="">
+                    <li>
+                        <Link href="" passHref>
                             <div onClick={showSidebar} className="m-6 pb-6" />
                         </Link>
                     </li>
