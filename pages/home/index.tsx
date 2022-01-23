@@ -11,7 +11,7 @@ const Home = () => {
         if (pathname === "/") {
             push("/home");
         }
-    }, []);
+    }, [pathname, push]);
 
     return (
         <div className="w-full h-screen bg-home-bg bg-cover bg-no-repeat flex flex-col items-center justify-center">
@@ -24,7 +24,7 @@ const Home = () => {
                 to product_name.
             </h3>
 
-            <Link href="/preferences" passHref>
+            <Link href="/cuisine" passHref>
                 <a className="flex justify-center second-font">
                     <Button style="roundedButton" className="text-shadow">
                         Start
