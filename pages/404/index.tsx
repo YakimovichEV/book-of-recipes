@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { Button } from "components/Button/Button";
-import { LeftArrow } from "components/LeftArrow/LeftArrow";
 
 const NotFoundPage = () => {
     return (
@@ -19,25 +18,24 @@ const NotFoundPage = () => {
                 />
                 <title>Page not found</title>
             </Head>
-            <div className="xl:container mx-auto">
-                <span className="extra-font-size font-bold text-green">
+            <div className="text-center mt-16">
+                <span className=" text-9xl font-bold text-green lg:extra-font-size">
                     404
                 </span>
-                <h1 className="text-4xl font-bold text-green">
+                <h1 className=" my-5 text-xl font-bold text-green lg:text-4xl lg:my-10">
                     Oops, We can seem to find <br />
                     the page what you are looking for.
                 </h1>
-                <p className="mt-7 mb-10 text-base font-normal text-green">
+                <p className="mb-10 font-normal text-green w-72 mx-auto sm:w-96 lg:text-xl lg:w-2/3">
                     The page you are looking for might have been removed, had
                     its name changed, or is temporarily unavailable.
                 </p>
                 <Link href="/home" passHref>
-                    <a>
+                    <a className="flex justify-center">
                         <Button
-                            style={"roundedButton"}
-                            className="flex items-center justify-center "
+                            style="roundedButton"
+                            className="flex items-center justify-center w-56 sm:w-72 md:w-72"
                         >
-                            <LeftArrow />
                             <span className="ml-2 text-dijon">
                                 To home page
                             </span>
