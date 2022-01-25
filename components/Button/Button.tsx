@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import classNames from "classnames";
 
 const btnClasses = {
@@ -8,16 +8,17 @@ const btnClasses = {
         "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded",
     formButton:
         "w-full bg-dijon text-white rounded-xl h-12 mt-5 text-base cursor-pointer duration-300 hover:bg-dark",
+    toggleModeFormButton: "text-white underline text-base",
     disabledButton:
         "bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed",
 } as const;
 
-export interface MyButtonProps {
+interface IButtonProps
+    extends Omit<ComponentPropsWithoutRef<"button">, "style"> {
     style?: keyof typeof btnClasses;
-    className?: string;
 }
 
-export const Button: React.FC<MyButtonProps> = ({
+export const Button: React.FC<IButtonProps> = ({
     children,
     style = "roundedButton",
     className,
