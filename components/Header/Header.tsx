@@ -23,14 +23,14 @@ export const Header: React.FC = () => {
         setSidebar((prevState) => !prevState);
     };
 
-    const profileLink = useMemo<"/profile" | "/auth">(() => {
+    const profileLink = useMemo<"/profile" | "/auth/login">(() => {
         if (session && status === "authenticated") {
             // is logged in
             return "/profile";
         }
 
         //not logged in or request is loading
-        return "/auth";
+        return "/auth/login";
     }, [session, status]);
 
     return (
