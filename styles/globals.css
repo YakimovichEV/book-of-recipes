@@ -32,4 +32,8 @@
     .extra-font-size {
         font-size: 350px;
     }
+
+    svg {
+        display: inline;
+    }
 }
