@@ -15,7 +15,6 @@ export const VeganRating: React.FC = () => {
         <Rating
             onClick={handleRating}
             ratingValue={rating}
-            iconsCount={4}
             transition
             emptyIcon={<LeafIcon />}
             fullIcon={<LeafIconFilled />}
