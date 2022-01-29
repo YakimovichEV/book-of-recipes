@@ -15,7 +15,6 @@ export const SpiceRating: React.FC = () => {
         <Rating
             onClick={handleRating}
             ratingValue={rating}
-            iconsCount={4}
             transition
             emptyIcon={<PepperIcon />}
             fullIcon={<PepperIconFilled />}
