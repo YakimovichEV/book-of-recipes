@@ -11,18 +11,11 @@ const Cuisine = () => {
                 Cuisine
             </h2>
             <SelectCuisine />
-            <Link href="/cuisine" passHref>
+            <Link href="/preferences" passHref>
                 <a className="flex justify-center second-font mt-10">
-                    <Link href="/preferences" passHref>
-                        <a>
-                            <Button
-                                style="roundedButton"
-                                className="text-shadow"
-                            >
-                                Save
-                            </Button>
-                        </a>
-                    </Link>
+                    <Button style="roundedButton" className="text-shadow">
+                        Save
+                    </Button>
                 </a>
             </Link>
             <h2 className="text-center second-font text-2xl text-green my-8 sm:text-3xl md:text-4xl lg:flex justify-end mr-10 xl:mr-40">
