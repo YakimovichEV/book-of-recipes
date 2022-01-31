@@ -7,6 +7,7 @@ const inputClasses = {
         "block w-4/5 h-12 bg-gray rounded-md p-3 mt-2 text-sm font-light border-none outline-none focus:ring-2 focus:ring-dijon",
     formSubmitInput:
         "w-1/2 bg-dijon text-white text-center rounded-xl h-12 mt-5 text-base cursor-pointer border-none outline-none duration-300 hover:bg-dark",
+    label: "block mt-5 text-base font-medium text-white",
 } as const;
 
 interface IInputProps<T extends { [key: string]: any }> {
@@ -35,10 +36,7 @@ export const Input = <
 
     return (
         <Fragment>
-            <label
-                htmlFor={name}
-                className="block mt-5 text-base font-medium text-white"
-            >
+            <label htmlFor={name} className={inputClasses.label}>
                 {label}
             </label>
             <input
