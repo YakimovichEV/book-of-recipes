@@ -13,7 +13,7 @@ interface IInputProps<T extends { [key: string]: any }> {
     style?: keyof typeof inputClasses;
     className?: string;
     label?: string;
-    type?: "text" | "password";
+    type?: "text" | "password" | "tel" | "number";
     name: Path<T>;
 }
 
