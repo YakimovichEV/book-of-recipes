@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Link from "next/link";
 
 import { ProfileHeader } from "components/Profile/ProfileHeader";
 import { ProfileInfo } from "components/Profile/ProfileInfo";
 import { ProfileForm } from "components/Profile/ProfileForm";
+import { Button } from "components/Button/Button";
 
 const Profile = () => {
     return (
-        <div>
+        <Fragment>
             <ProfileHeader />
             <div className="lg:flex lg:items-center lg:w-full">
                 <div className="lg:w-1/2">
@@ -22,7 +24,12 @@ const Profile = () => {
                     <ProfileForm />
                 </div>
             </div>
-        </div>
+            <Link href="home" passHref>
+                <a className="flex items-center justify-center lg:justify-start lg:mx-20 lg:mb-5">
+                    <Button>Home</Button>
+                </a>
+            </Link>
+        </Fragment>
     );
 };
 
