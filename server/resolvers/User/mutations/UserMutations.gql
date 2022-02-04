@@ -1,3 +1,4 @@
 extend type Mutation {
     createUser(email: String!, password: String!): Boolean!
+    changePassword(oldPassword: String!, newPassword: String!): Boolean!
 }
