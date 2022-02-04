@@ -7,5 +7,5 @@ export default {
     dbName: "book-of-recipes",
     type: "mongo",
     clientUrl: appConfig.MONGODB_URL,
-    debug: !appConfig.IS_PRODUCTION,
+    // debug: !appConfig.IS_PRODUCTION,
 } as Parameters<typeof MikroORM.init>[0];

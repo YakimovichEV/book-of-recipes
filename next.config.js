@@ -1,19 +1,5 @@
-module.exports = {
-    webpack: (config, { isServer }) => {
-        if (!isServer) {
-            config.resolve.fallback = {
-                fs: false,
-            };
-        }
+/**
+ * @type {import('next').NextConfig}
+ */
 
-        config.cache = false;
-
-        config.module.rules.push({
-            test: /\.(graphql|gql)$/,
-            exclude: /node_modules/,
-            loader: "graphql-tag/loader",
-        });
-
-        return config;
-    },
-};
+module.exports = {};

@@ -1,4 +1,4 @@
-const { printSchema } = require("graphql");
+const { printSchemaWithDirectives } = require("@graphql-tools/utils");
 
 module.exports = {
     plugin: (schema, documents, config) => {
@@ -6,7 +6,7 @@ module.exports = {
             'import gql from "graphql-tag";',
             "",
             "export const typeDefs = gql`",
-            printSchema(schema),
+            printSchemaWithDirectives(schema),
             "`;",
             "",
         ].join("\n");

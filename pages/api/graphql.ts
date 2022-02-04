@@ -4,20 +4,41 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-co
 import { NextApiRequest, NextApiResponse } from "next";
 import { typeDefs } from "../../server/generated/graphql";
 import { ApolloResolvers } from "../../server/resolvers";
-import { MikroORM } from "@mikro-orm/core";
-import microConfig from "../../server/mikro-orm.config";
+import { ApolloContext } from "../../@types/graphql";
+import { getMikro } from "server/helpers/db";
+import { User } from "server/entities/User";
+import { getToken } from "next-auth/jwt";
 
 async function createServer() {
-    const orm = await MikroORM.init(microConfig);
+    const { em } = await getMikro();
 
     return new ApolloServer({
         typeDefs,
         resolvers: ApolloResolvers,
-        // @ts-ignore
-        playground: true,
         introspection: true,
+        context: async ({
+            req,
+            res,
+        }: {
+            req: NextApiRequest;
+            res: NextApiResponse;
+        }): Promise<ApolloContext> => {
+            const token = await getToken({ req });
 
-        context: ({ req, res }) => ({ req, res, em: orm.em }),
+            let user = null;
+
+            if (token && token.email) {
+                const { em } = await getMikro();
+                user = await em.findOne(User, { email: token.email });
+            }
+
+            return {
+                req,
+                res: res as ApolloContext["res"],
+                em,
+                currentUser: user,
+            };
+        },
         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     });
 }

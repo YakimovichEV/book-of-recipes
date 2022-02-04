@@ -17,8 +17,17 @@ export class User {
     @Property({ type: "string" })
     email!: string;
 
+    @Property({ type: "string", default: "" })
+    name!: string;
+
     @Property({ type: "string" })
     password!: string;
+
+    @Property({ type: "number", default: 1 })
+    version!: number;
+
+    @Property({ type: "string" })
+    image?: string | null = null;
 
     @Property({ type: "date" })
     createdAt: Date = new Date();
