@@ -12,8 +12,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     const apolloClient = useApollo(pageProps);
 
     return (
-        <ApolloProvider client={apolloClient}>
-            <SessionProvider session={session}>
+        <SessionProvider session={session}>
+            <ApolloProvider client={apolloClient}>
                 <Layout>
                     <Head>
                         <meta
@@ -28,8 +28,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
                     </Head>
                     <Component {...pageProps} />
                 </Layout>
-            </SessionProvider>
-        </ApolloProvider>
+            </ApolloProvider>
+        </SessionProvider>
     );
 }
 

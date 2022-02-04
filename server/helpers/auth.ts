@@ -11,3 +11,15 @@ export async function verifyPassword(password: string, hashedPassword: string) {
 
     return isValid;
 }
+
+export const getSavedToken = (() => {
+    let token: string | null = null;
+
+    return (newToken?: string | null) => {
+        if (newToken || newToken === null) {
+            token = newToken;
+        }
+
+        return token;
+    };
+})();

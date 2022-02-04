@@ -1,21 +1,33 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { User } from "server/entities/User";
 
 import { verifyPassword } from "server/helpers/auth";
-import { connectToDatabase } from "server/helpers/db";
+import { getMikro } from "server/helpers/db";
 
-export default NextAuth({
+export const authConfig: NextAuthOptions = {
+    secret: process.env.NEXTAUTH_SECRET,
+    jwt: { maxAge: 60 * 15 },
     session: {
-        jwt: true,
+        maxAge: 60 * 60 * 7,
+        strategy: "jwt",
     },
     providers: [
         CredentialsProvider({
-            async authorize(credentials: any) {
-                const client = await connectToDatabase();
+            name: "credentials",
+            credentials: {
+                email: { label: "Email", type: "text" },
+                password: { label: "Password", type: "password" },
+            },
+            type: "credentials",
+            async authorize(credentials) {
+                if (!credentials) {
+                    return null;
+                }
 
-                const usersCollection = client.db().collection("users");
+                const { em } = await getMikro();
 
-                const user = await usersCollection.findOne({
+                const user = await em.findOne(User, {
                     email: credentials.email,
                 });
 
@@ -29,14 +41,18 @@ export default NextAuth({
                 );
 
                 if (!isValid) {
-                    client.close();
                     throw new Error("Could now log you in");
                 }
 
-                client.close();
-
-                return { email: user.email };
+                return {
+                    id: user.id,
+                    email: user.email,
+                    image: user.image,
+                    name: user.name,
+                };
             },
         }),
     ],
-});
+};
+
+export default NextAuth(authConfig);

@@ -1,23 +1,71 @@
 import {
     ApolloClient,
+    ApolloLink,
     HttpLink,
     InMemoryCache,
     NormalizedCacheObject,
 } from "@apollo/client";
-import { appConfig } from "../../../shared/config";
 import merge from "deepmerge";
 import isEqual from "lodash.isequal";
 import { useMemo } from "react";
+import { onError } from "apollo-link-error";
+import { getSavedToken } from "server/helpers/auth";
+import { setContext } from "@apollo/client/link/context";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
+
+const cleanTypeName = new ApolloLink((operation, forward) => {
+    if (operation.variables) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const omitTypename = (key: string, value: any) =>
+            key === "__typename" ? undefined : value;
+        operation.variables = JSON.parse(
+            JSON.stringify(operation.variables),
+            omitTypename,
+        );
+    }
+    return forward(operation).map((data) => {
+        return data;
+    });
+});
+
+const authLink = setContext(async (_, { headers }) => {
+    const token = getSavedToken();
+
+    return {
+        headers: {
+            ...headers,
+            ["authorization"]: token ? `Bearer ${token}` : "",
+        },
+    };
+});
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+        graphQLErrors.forEach(({ message, locations, path }) =>
+            console.log(
+                `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+            ),
+        );
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+const httpLink = new HttpLink({
+    uri: `http://localhost:3000/api/graphql`,
+});
 
 function createApolloClient() {
     return new ApolloClient({
         ssrMode: typeof window === "undefined",
-        link: new HttpLink({
-            uri: `${appConfig.SERVER_URI}/api/graphql`,
-        }),
         cache: new InMemoryCache(),
+        headers: {
+            ["authorization"]: "more headers",
+        },
+        link: ApolloLink.from([
+            cleanTypeName,
+            errorLink as unknown as ApolloLink,
+            authLink.concat(httpLink),
+        ]),
     });
 }
 
@@ -50,18 +98,19 @@ export function initializeApollo(
 
 export function addApolloState(
     client: ApolloClient<NormalizedCacheObject>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     pageProps: any,
 ) {
     if (pageProps?.props) {
-        pageProps.props[appConfig.APOLLO_STATE_PROP_NAME] =
-            client.cache.extract();
+        pageProps.props["__APOLLO_STATE__"] = client.cache.extract();
     }
 
     return pageProps;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useApollo(pageProps: any) {
-    const state = pageProps[appConfig.APOLLO_STATE_PROP_NAME];
+    const state = pageProps["__APOLLO_STATE__"];
     const store = useMemo(() => initializeApollo(state), [state]);
     return store;
 }

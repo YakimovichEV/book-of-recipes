@@ -1,12 +1,15 @@
-import { User } from "server/entities/User";
 import { QueryResolvers } from "../../../generated/graphql";
 
-export const Hello: QueryResolvers["hello"] = async (_root, _args, { em }) => {
+export const Hello: QueryResolvers["hello"] = async (
+    _root,
+    _args,
+    { currentUser },
+) => {
     await new Promise((resolve) => {
         setTimeout(() => {
             resolve(null);
-        }, 3000);
+        }, 1000);
     });
 
-    return "Hello World!";
+    return currentUser?.name || "Hello World!";
 };

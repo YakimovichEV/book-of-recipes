@@ -1,5 +1,6 @@
 import { UserInputError } from "apollo-server-micro";
 import { User } from "server/entities/User";
+import { hashPassword } from "server/helpers/auth";
 import { MutationResolvers } from "../../../generated/graphql";
 
 export const createUser: MutationResolvers["createUser"] = async (
@@ -16,7 +17,7 @@ export const createUser: MutationResolvers["createUser"] = async (
     const user = new User();
 
     user.email = email;
-    user.password = password;
+    user.password = await hashPassword(password);
 
     await em.persistAndFlush(user);
 

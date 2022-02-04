@@ -1,5 +1,3 @@
-directive @upper on FIELD
-
 type Query {
     hello: String!
 }
