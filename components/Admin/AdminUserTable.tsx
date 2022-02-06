@@ -2,7 +2,7 @@ import React from "react";
 
 export const AdminUserTable: React.FC = () => {
     return (
-        <div className="flex flex-col m-10">
+        <div className="flex flex-col m-10 w-4/5">
             <div className="py-2 -my-2">
                 <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray200 shadow sm:rounded-lg">
                     <table className="min-w-full">
