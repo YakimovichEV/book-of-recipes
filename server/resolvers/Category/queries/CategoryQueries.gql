@@ -4,8 +4,8 @@ type Category {
     description: String!
     image: String!
     parentCategory: Category
-    childCategories: [Category]!
-    recipes: [Recipe]!
+    childCategories: [Category]
+    recipes: [Recipe]
 }
 
 extend type Query {

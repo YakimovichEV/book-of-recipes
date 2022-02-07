@@ -6,5 +6,5 @@ input CategoryInput {
 }
 
 extend type Mutation {
-    createCategory(category: CategoryInput!): Boolean
+    createOrUpdateCategory(categoryId: ID, category: CategoryInput!): Category
 }
