@@ -1,9 +1,11 @@
 import {
     Entity,
+    Enum,
     PrimaryKey,
     Property,
     SerializedPrimaryKey,
 } from "@mikro-orm/core";
+import { Role } from "server/generated/graphql";
 import { ObjectId } from "mongodb";
 
 @Entity()
@@ -25,6 +27,9 @@ export class User {
 
     @Property({ type: "number", default: 1 })
     version!: number;
+
+    @Enum({ items: () => Role, default: Role.User, type: "string" })
+    role = Role.User;
 
     @Property({ type: "string" })
     image?: string | null = null;

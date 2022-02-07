@@ -1,0 +1,14 @@
+type Category {
+    id: ID
+    name: String!
+    description: String!
+    image: String!
+    parentCategory: Category
+    childCategories: [Category]
+    recipes: [Recipe]
+}
+
+extend type Query {
+    getCategories: [Category]!
+    getCategory: Category
+}

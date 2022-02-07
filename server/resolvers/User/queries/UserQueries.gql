@@ -1,6 +1,12 @@
+enum Role {
+    admin
+    user
+}
+
 type User {
     email: String!
     name: String!
+    role: Role!
 }
 
 extend type Query {

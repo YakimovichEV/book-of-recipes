@@ -1,0 +1,16 @@
+type Recipe {
+    id: ID!
+    name: String!
+    description: String!
+    image: String!
+    prepTime: Int!
+    cookingTime: Int!
+    serves: Int!
+    ingredients: [String]!
+    instructions: [String]!
+    tips: [String]!
+}
+
+extend type Query {
+    getRecipeList: [Recipe]!
+}
