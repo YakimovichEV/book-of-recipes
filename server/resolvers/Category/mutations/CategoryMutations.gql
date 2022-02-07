@@ -1,0 +1,10 @@
+input CategoryInput {
+    name: String!
+    description: String!
+    image: String!
+    parentCategory: ID
+}
+
+extend type Mutation {
+    createOrUpdateCategory(categoryId: ID, category: CategoryInput!): Category
+}
