@@ -13,11 +13,21 @@ export const childCategories: ResolverList["childCategories"] = async (
     return category.childCategories || [];
 };
 
-export const recipes: CategoryResolvers<
-    ApolloContext,
-    Category
->["recipes"] = async (category, {}, { em }) => {
+export const recipes: ResolverList["recipes"] = async (
+    category,
+    {},
+    { em },
+) => {
     await em.populate(category, ["recipes"]);
 
     return category.recipes || [];
+};
+
+export const parentCategory: ResolverList["parentCategory"] = async (
+    category,
+    {},
+    { em },
+) => {
+    await em.populate(category, ["parentCategory"]);
+    return category.parentCategory || null;
 };
