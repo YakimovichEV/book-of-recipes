@@ -2,11 +2,19 @@ input UserInput {
     email: String!
     password: String!
     name: String!
+    phoneNumber: String!
+}
+
+input UserUpdateInput {
+    userId: ID!
+    email: String!
+    name: String!
+    phoneNumber: String!
 }
 
 extend type Mutation {
     createUser(user: UserInput!): Boolean!
     changePassword(oldPassword: String!, newPassword: String!): Boolean!
     deleteUser(userId: ID!): ID!
-    updateUser(userId: ID!, user: UserInput!): User!
+    updateUser(user: UserUpdateInput!): User!
 }

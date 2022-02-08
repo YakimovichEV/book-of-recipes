@@ -28,6 +28,9 @@ export class User {
     @Property({ type: "number", default: 1 })
     version!: number;
 
+    @Property({ type: "string" })
+    phoneNumber!: string;
+
     @Enum({ items: () => Role, default: Role.User, type: "string" })
     role = Role.User;
 

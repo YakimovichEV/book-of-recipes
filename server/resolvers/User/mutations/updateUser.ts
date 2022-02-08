@@ -4,9 +4,11 @@ import { MutationResolvers } from "../../../generated/graphql";
 
 export const updateUser: MutationResolvers["updateUser"] = async (
     _,
-    { userId, user },
+    { user },
     { em },
 ) => {
+    const { userId } = user;
+
     await em.nativeUpdate(User, { id: userId }, user);
 
     const updatedUser = await em.findOne(User, { id: userId });

@@ -5,7 +5,7 @@ import { MutationResolvers } from "../../../generated/graphql";
 
 export const createUser: MutationResolvers["createUser"] = async (
     _root,
-    { user: { email, password, name } },
+    { user: { email, password, name, phoneNumber } },
     { em },
 ) => {
     const userExists = await em.findOne(User, { email });
@@ -19,6 +19,7 @@ export const createUser: MutationResolvers["createUser"] = async (
     user.email = email;
     user.password = await hashPassword(password);
     user.name = name;
+    user.phoneNumber = phoneNumber;
 
     await em.persistAndFlush(user);
 
