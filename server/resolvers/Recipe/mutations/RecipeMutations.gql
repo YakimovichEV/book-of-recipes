@@ -5,12 +5,12 @@ input RecipeInput {
     prepTime: Int!
     cookingTime: Int!
     serves: Int!
-    ingredients: [String]!
-    instructions: [String]!
-    tips: [String]!
+    ingredients: [String!]!
+    instructions: [String!]!
+    tips: [String!]!
     category: ID!
 }
 
 extend type Mutation {
-    createRecipe(recipe: RecipeInput!): Recipe!
+    createOrUpdateRecipe(recipe: RecipeInput!, recipeId: ID): Recipe!
 }
