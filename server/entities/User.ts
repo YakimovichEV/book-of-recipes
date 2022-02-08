@@ -26,7 +26,7 @@ export class User {
     password!: string;
 
     @Property({ type: "number", default: 1 })
-    version!: number;
+    version = 1;
 
     @Property({ type: "string" })
     phoneNumber!: string;

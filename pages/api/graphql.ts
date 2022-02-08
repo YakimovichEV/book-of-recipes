@@ -10,8 +10,6 @@ import { User } from "server/entities/User";
 import { getToken } from "next-auth/jwt";
 
 async function createServer() {
-    const { em } = await getMikro();
-
     return new ApolloServer({
         typeDefs,
         resolvers: ApolloResolvers,
@@ -27,8 +25,9 @@ async function createServer() {
 
             let user = null;
 
+            const { em } = await getMikro();
+
             if (token && token.email) {
-                const { em } = await getMikro();
                 user = await em.findOne(User, { email: token.email });
             }
 
