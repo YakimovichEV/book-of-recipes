@@ -1,14 +1,14 @@
 type Category {
-    id: ID
+    id: ID!
     name: String!
     description: String!
     image: String!
     parentCategory: Category
-    childCategories: [Category]
-    recipes: [Recipe]
+    childCategories: [Category]!
+    recipes: [Recipe]!
 }
 
 extend type Query {
     getCategories: [Category]!
-    getCategory: Category
+    getCategory(categoryId: ID!): Category
 }

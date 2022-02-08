@@ -1,14 +1,13 @@
 import { QueryResolvers } from "../../../generated/graphql";
 import { Category } from "../../../entities/Category";
 
+//@ts-expect-error We resolve some of the fields separately
 export const getCategory: QueryResolvers["getCategory"] = async (
     _root,
-    _args,
+    { categoryId },
     { em },
 ) => {
-    const category = await em.findOne(Category, {
-        id: "61ffaa13901cf912d039b295",
+    return em.findOne(Category, {
+        id: categoryId,
     });
-
-    return category as Category;
 };

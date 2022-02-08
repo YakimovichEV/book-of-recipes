@@ -13,4 +13,5 @@ type Recipe {
 
 extend type Query {
     getRecipeList: [Recipe]!
+    getRecipe(recipeId: ID!): Recipe
 }
