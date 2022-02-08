@@ -6,7 +6,7 @@ export const getUserList: QueryResolvers["getUserList"] = async (
     _args,
     { em },
 ) => {
-    const list = await em.find(User, {});
+    const list = await em.find(User, {}, { limit: 10 });
 
     return list;
 };
