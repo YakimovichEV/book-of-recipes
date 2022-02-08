@@ -14,6 +14,9 @@ generates:
     ./server/generated/graphql.ts:
         config:
             contextType: ../../@types/graphql#ApolloContext
+            mappers:
+                User: "../../server/resolvers/User/User#UserWithFieldResolvers"
+                Recipe: "../../server/resolvers/User/Recipe#RecipeWithFieldResolvers"
         plugins:
             - "typescript"
             - "typescript-resolvers"
