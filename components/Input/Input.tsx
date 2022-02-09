@@ -11,7 +11,7 @@ const inputClasses = {
         "w-full px-3 shadow-inner rounded-bl-sm rounded-tl-sm border border-gray300 focus:border-blue-700 focus:outline-none",
     adminInputSecond:
         "block py-2.5 px-0 w-full text-sm text-gray900 bg-transparent border-0 border-b-2 border-gray300 appearance-none dark:text-white dark:border-gray600 dark:focus:border-blue500 focus:outline-none focus:ring-0 focus:border-blue600 peer",
-    label: "block mt-5 text-base font-medium text-white",
+    label: "block text-base font-medium text-white",
 } as const;
 
 type IInputProps<T extends { [key: string]: any }> = Omit<
