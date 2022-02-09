@@ -34,8 +34,8 @@ export class User {
     @Enum({ items: () => Role, default: Role.User, type: "string" })
     role = Role.User;
 
-    @Property({ type: "string" })
-    image?: string | null = null;
+    @Property({ type: "string", nullable: true })
+    image?: string | null;
 
     @Property({ type: "date" })
     createdAt: Date = new Date();
