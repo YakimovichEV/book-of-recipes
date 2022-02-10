@@ -13,10 +13,11 @@ const btnClasses = {
         "bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed",
     adminButton:
         "flex items-center px-2 py-1 text-sm text-blue700 uppercase border border-blue-700 rounded-sm hover:bg-gray100",
+    addUserButton:
+        "text-white bg-blue700 hover:bg-blue800 focus:ring-4 focus:ring-blue300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue600 dark:hover:bg-blue700 dark:focus:ring-blue800",
     searchButton:
         "flex items-center px-6 py-1 text-gray600 bg-gray100 border border-gray300 rounded-tr-sm rounded-br-sm hover:bg-gray200",
-    adminButton:
-        "text-white bg-blue700 hover:bg-blue800 focus:ring-4 focus:ring-blue300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue600 dark:hover:bg-blue700 dark:focus:ring-blue800",
+    userTableButton: "bg-transparent w-0 h-0",
 } as const;
 
 interface IButtonProps
