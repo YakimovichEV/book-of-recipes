@@ -1,0 +1,26 @@
+query GetUserList {
+    getUserList {
+        id
+        email
+        name
+        phoneNumber
+        role
+    }
+}
+
+mutation CreateUser($user: UserInput!) {
+    createUser(user: $user)
+}
+
+mutation DeleteUser($userId: ID!) {
+    deleteUser(userId: $userId)
+}
+
+mutation UpdateUserData($user: UserUpdateInput!) {
+    updateUser(user: $user) {
+        id
+        email
+        name
+        phoneNumber
+    }
+}
