@@ -34,17 +34,15 @@ export const Header: React.FC = () => {
     }, [session, status]);
 
     return (
-        <div className="m-5 flex justify-between items-center relative">
+        <div className="m-5 flex justify-between items-center relative z-50">
             <Link href="/home" passHref>
                 <a className="hidden cursor-pointer sm:block">
                     <Logo />
                 </a>
             </Link>
             <Link href={profileLink} passHref>
-                <a>
-                    <span className="absolute top-1 right-14 z-10">
-                        <HeaderUserIcon />
-                    </span>
+                <a className="absolute top-[4.8px] right-14 z-10">
+                    <HeaderUserIcon />
                 </a>
             </Link>
             <Link href="" passHref>
