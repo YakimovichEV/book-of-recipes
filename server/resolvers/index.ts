@@ -9,6 +9,7 @@ import { firstName } from "./User/fieldResolvers/User";
 import { getRecipeList } from "./Recipe/queries/getRecipeList";
 import { getRecipe } from "./Recipe/queries/getRecipe";
 import { createOrUpdateRecipe } from "./Recipe/mutations/createOrUpdateRecipe";
+import { deleteRecipe } from "./Recipe/mutations/deleteRecipe";
 import { createOrUpdateCategory } from "./Category/mutations/createOrUpdateCategory";
 import { getCategory } from "./Category/queries/getCategory";
 import {
@@ -26,9 +27,10 @@ export const ApolloResolvers: Resolvers = {
         getCategory,
     },
     Mutation: {
-        createUser,
         createOrUpdateRecipe,
+        deleteRecipe: deleteRecipe,
         createOrUpdateCategory,
+        createUser,
         updateUser,
         deleteUser,
     },
