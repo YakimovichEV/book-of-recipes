@@ -13,4 +13,5 @@ input RecipeInput {
 
 extend type Mutation {
     createOrUpdateRecipe(recipe: RecipeInput!, recipeId: ID): Recipe!
+    deleteRecipe(recipeId: ID!): Boolean!
 }
