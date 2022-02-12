@@ -14,6 +14,7 @@ const inputClasses = {
     label: "block text-base font-medium text-white",
 } as const;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type IInputProps<T extends { [key: string]: any }> = Omit<
     React.HTMLProps<HTMLInputElement>,
     "style"
@@ -21,11 +22,13 @@ type IInputProps<T extends { [key: string]: any }> = Omit<
     style?: keyof typeof inputClasses;
     className?: string;
     label?: string;
-    type?: "text" | "password" | "tel" | "number" | "email";
+    type?: "text" | "password" | "tel" | "number" | "email" | "file";
     name: Path<T>;
+    options?: Parameters<ReturnType<typeof useFormContext>["register"]>[1];
 };
 
 export const Input = <
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     T extends { [key: string]: any } = { [key: string]: any },
 >({
     label,
@@ -33,6 +36,7 @@ export const Input = <
     style = "formInput",
     type = "text",
     className,
+    options,
     ...props
 }: IInputProps<T>) => {
     const {
@@ -48,7 +52,7 @@ export const Input = <
                 {label}
             </label>
             <input
-                {...register(name)}
+                {...register(name, options)}
                 type={type}
                 className={classNames(stylesInput, className)}
                 {...props}
