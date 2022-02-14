@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useForm, FormProvider } from "react-hook-form";
 
 import {
@@ -82,9 +83,14 @@ export const AddUser: React.FC = () => {
                         </label>
                     </div>
                 </div>
-                <Button type="submit" style="addUserButton">
+                <Button type="submit" style="addUserButton" className="mr-5">
                     Submit
                 </Button>
+                <Link href="/admin/users" passHref>
+                    <a>
+                        <Button style="userTableButton">Back</Button>
+                    </a>
+                </Link>
             </form>
         </FormProvider>
     );
