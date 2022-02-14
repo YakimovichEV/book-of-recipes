@@ -8,6 +8,7 @@ import { ApolloContext } from "../../@types/graphql";
 import { getMikro } from "server/helpers/db";
 import { User } from "server/entities/User";
 import { getToken } from "next-auth/jwt";
+import { processRequest } from "graphql-upload";
 
 async function createServer() {
     const { em } = await getMikro();
@@ -43,19 +44,25 @@ async function createServer() {
 }
 
 const apolloServer = createServer();
+const server = apolloServer.then((server) => server.start());
 
-const startServer = apolloServer.then((server) => server.start());
+const apolloHandler = server.then(async () =>
+    (await apolloServer).createHandler({
+        path: "/api/graphql",
+    }),
+);
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-    await startServer;
-    const server = await apolloServer;
+    const contentType = req.headers["content-type"];
+    if (contentType && contentType.startsWith("multipart/form-data")) {
+        //@ts-expect-error creating a field for library
+        req.filePayload = await processRequest(req, res);
+    }
 
-    server.createHandler({
-        path: "/api/graphql",
-    })(req, res);
+    (await apolloHandler)(req, res);
 }
 
 export const config = {

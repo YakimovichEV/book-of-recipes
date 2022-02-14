@@ -1,7 +1,6 @@
 import {
     ApolloClient,
     ApolloLink,
-    HttpLink,
     InMemoryCache,
     NormalizedCacheObject,
 } from "@apollo/client";
@@ -11,23 +10,10 @@ import { useMemo } from "react";
 import { onError } from "apollo-link-error";
 import { getSavedToken } from "server/helpers/auth";
 import { setContext } from "@apollo/client/link/context";
+import { createUploadLink } from "apollo-upload-client";
+import { appConfig } from "shared/config";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
-
-const cleanTypeName = new ApolloLink((operation, forward) => {
-    if (operation.variables) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const omitTypename = (key: string, value: any) =>
-            key === "__typename" ? undefined : value;
-        operation.variables = JSON.parse(
-            JSON.stringify(operation.variables),
-            omitTypename,
-        );
-    }
-    return forward(operation).map((data) => {
-        return data;
-    });
-});
 
 const authLink = setContext(async (_, { headers }) => {
     const token = getSavedToken();
@@ -50,19 +36,15 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const httpLink = new HttpLink({
-    uri: `http://localhost:3000/api/graphql`,
+const httpLink = createUploadLink({
+    uri: `${appConfig.SERVER_URI}/api/graphql`,
 });
 
 function createApolloClient() {
     return new ApolloClient({
-        ssrMode: typeof window === "undefined",
+        ssrMode: appConfig.IS_SERVER,
         cache: new InMemoryCache(),
-        headers: {
-            ["authorization"]: "more headers",
-        },
         link: ApolloLink.from([
-            cleanTypeName,
             errorLink as unknown as ApolloLink,
             authLink.concat(httpLink),
         ]),
@@ -89,7 +71,7 @@ export function initializeApollo(
         _apolloClient.cache.restore(data);
     }
 
-    if (typeof window === "undefined") return _apolloClient;
+    if (appConfig.IS_SERVER) return _apolloClient;
 
     if (!apolloClient) apolloClient = _apolloClient;
 
