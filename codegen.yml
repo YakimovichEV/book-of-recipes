@@ -6,6 +6,9 @@ generates:
     ./client/generated/graphql.tsx:
         config:
             contextType: ../../@types/graphql#ApolloContext
+            maybeValue: T | null | undefined
+            scalars:
+                Upload: "File"
         plugins:
             - "typescript"
             - "typescript-operations"
@@ -14,10 +17,16 @@ generates:
     ./server/generated/graphql.ts:
         config:
             contextType: ../../@types/graphql#ApolloContext
+            maybeValue: T | null | undefined
             mappers:
                 User: "../../server/resolvers/User/User#UserWithFieldResolvers"
-                Recipe: "../../server/resolvers/User/Recipe#RecipeWithFieldResolvers"
+            scalars:
+                Upload: "Promise<FileUpload>"
         plugins:
+            - add:
+                  content:
+                      - "/* eslint-disable */"
+                      - 'import {FileUpload} from "graphql-upload"'
             - "typescript"
             - "typescript-resolvers"
             - "typescript-typedefs.js"

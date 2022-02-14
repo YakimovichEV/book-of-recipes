@@ -61,6 +61,11 @@
         "typeRoots": ["node_modules/@types", "./@types"],
         "declaration": true
     },
-    "include": ["pages/**/*", "@types/**/*"],
+    "include": [
+        "pages/**/*",
+        "@types/**/*",
+        "client/generated/**/*",
+        "server/generated/**/*"
+    ],
     "exclude": ["node_modules"]
 }
