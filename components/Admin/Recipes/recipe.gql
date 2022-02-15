@@ -1,0 +1,33 @@
+query GetRecipeList {
+    getRecipeList {
+        id
+        image
+        name
+        description
+        cookingTime
+        instructions
+        prepTime
+        ingredients
+        serves
+        tips
+    }
+}
+
+mutation CreateOrUpdateRecipe($recipe: RecipeInput!, $recipeId: ID) {
+    createOrUpdateRecipe(recipe: $recipe, recipeId: $recipeId) {
+        id
+        image
+        name
+        description
+        cookingTime
+        instructions
+        prepTime
+        ingredients
+        serves
+        tips
+    }
+}
+
+mutation DeleteRecipe($recipeId: ID!) {
+    deleteRecipe(recipeId: $recipeId)
+}
