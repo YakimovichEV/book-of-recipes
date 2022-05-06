@@ -1,0 +1,11 @@
+.history__title--admin {
+    @apply text-3xl font-medium text-black dark:text-white;
+}
+
+.history__subtitle--admin {
+    @apply text-xl font-medium text-black dark:text-white;
+}
+
+.history__incidents--admin {
+    @apply text-lg text-black dark:text-white;
+}

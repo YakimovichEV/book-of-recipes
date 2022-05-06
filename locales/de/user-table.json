@@ -1,0 +1,8 @@
+{
+    "role": "Rolle",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Telefon",
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
+}

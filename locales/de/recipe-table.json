@@ -1,0 +1,13 @@
+{
+    "name": "Name",
+    "description": "Beschreibung",
+    "category": "Kategorie",
+    "ingredients": "Zutaten",
+    "cooking-time": "Kochzeit",
+    "instructions": "Anweisungen",
+    "prep-time": "Vorbereitungszeit",
+    "serves": "Dient",
+    "tips": "Tipps",
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
+}

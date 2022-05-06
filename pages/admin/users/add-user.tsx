@@ -1,15 +1,15 @@
 import React, { Fragment } from "react";
 
 import { AddUser } from "components/Admin/Users/AddUser";
-import { AdminHeader } from "components/Admin/AdminHeader";
-import { AdminAside } from "components/Admin/AdminAside";
+import { Header } from "components/Admin/Header";
+import { Aside } from "components/Admin/Aside";
 
 const AddUserPage = () => {
     return (
         <Fragment>
-            <AdminHeader />
+            <Header />
             <div className="flex">
-                <AdminAside />
+                <Aside />
                 <div className="w-full flex flex-col">
                     <AddUser />
                 </div>

@@ -2,6 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
+import { appWithTranslation } from "next-i18next";
 
 import { Layout } from "components/Layout/Layout";
 import { useApollo } from "../client/hocs/apollo/client";
@@ -33,4 +34,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

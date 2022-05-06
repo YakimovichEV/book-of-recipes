@@ -10,6 +10,7 @@ module.exports = {
                 secondFont: ["Salsa", "sans-serif"],
                 logoFont: ["Sancreek", "sans-serif"],
             },
+            darkMode: "class",
             colors: {
                 transparent: "transparent",
                 white: "#ffffff",

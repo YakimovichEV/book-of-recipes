@@ -13,6 +13,13 @@ query GetRecipeList {
     }
 }
 
+query GetCategoriesList {
+    getCategories {
+        id
+        name
+    }
+}
+
 mutation CreateOrUpdateRecipe($recipe: RecipeInput!, $recipeId: ID) {
     createOrUpdateRecipe(recipe: $recipe, recipeId: $recipeId) {
         id

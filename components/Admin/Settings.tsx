@@ -1,8 +1,8 @@
 import React from "react";
 
-export const AdminSettings: React.FC = () => {
+export const Settings: React.FC = () => {
     return (
-        <form className="m-10 w-1/2">
+        <form className="m-10 w-4/5">
             <div className="relative z-0 mb-6 w-full group">
                 <input
                     type="email"

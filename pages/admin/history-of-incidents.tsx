@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
 
-import { AdminHeader } from "components/Admin/AdminHeader";
-import { AdminAside } from "components/Admin/AdminAside";
-import { AdminHistory } from "components/Admin/AdminHistory";
+import { Header } from "components/Admin/Header";
+import { Aside } from "components/Admin/Aside";
+import { History } from "components/Admin/History";
 
 const AdminHistoryPage = () => {
     return (
         <Fragment>
-            <AdminHeader />
+            <Header />
             <div className="flex">
-                <AdminAside />
-                <AdminHistory />
+                <Aside />
+                <History />
             </div>
         </Fragment>
     );

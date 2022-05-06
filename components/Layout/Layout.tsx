@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Layout: React.FC = (props) => {
-    return <main>{props.children}</main>;
+export const Layout: React.FC = ({ children }) => {
+    return <main>{children}</main>;
 };

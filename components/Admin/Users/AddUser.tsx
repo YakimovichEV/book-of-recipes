@@ -1,24 +1,31 @@
 import React from "react";
 import Link from "next/link";
-import { useForm, FormProvider } from "react-hook-form";
+import ReactSelect from "react-select";
+import { useRouter } from "next/router";
+import { useForm, FormProvider, Controller } from "react-hook-form";
 
 import {
     GetUserListDocument,
     useCreateUserMutation,
     UserInput,
+    Role,
 } from "client/generated/graphql";
 import { Input } from "components/Input/Input";
 import { Button } from "components/Button/Button";
 
-const labelStyle =
-    "absolute text-sm text-gray500 dark:text-gray400 -translate-y-[30.9px] duration-300 mt-0 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-blue600 peer-focus:dark:text-blue500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30.9px]";
+interface OptionType {
+    value: string;
+    label: string;
+}
 
 export const AddUser: React.FC = () => {
     const [addUser] = useCreateUserMutation();
 
+    const router = useRouter();
+
     const methods = useForm<UserInput>();
 
-    const { handleSubmit, reset } = methods;
+    const { handleSubmit, reset, setValue, control } = methods;
 
     const onSubmit = (data: UserInput) => {
         addUser({
@@ -29,6 +36,14 @@ export const AddUser: React.FC = () => {
             refetchQueries: [GetUserListDocument],
         });
     };
+
+    const categoryOptions = Object.values(Role).map((role) => ({
+        value: role,
+        label: role,
+    }));
+
+    const getValue = (value: string) =>
+        value ? categoryOptions.find((option) => option.value === value) : "";
 
     return (
         <FormProvider {...methods}>
@@ -41,7 +56,7 @@ export const AddUser: React.FC = () => {
                         placeholder=" "
                         required
                     />
-                    <label htmlFor="email" className={labelStyle}>
+                    <label htmlFor="email" className="table__label--admin">
                         Email address
                     </label>
                 </div>
@@ -53,24 +68,24 @@ export const AddUser: React.FC = () => {
                         placeholder=" "
                         required
                     />
-                    <label htmlFor="password" className={labelStyle}>
+                    <label htmlFor="password" className="table__label--admin">
                         Password
+                    </label>
+                </div>
+                <div className="relative z-0 mb-6 w-full">
+                    <Input<UserInput>
+                        type="text"
+                        name="name"
+                        style="adminInputSecond"
+                        placeholder=" "
+                        required
+                    />
+                    <label htmlFor="name" className="table__label--admin">
+                        Fullname
                     </label>
                 </div>
                 <div className="flex items-center">
                     <div className="relative z-0 mb-6 w-1/2">
-                        <Input<UserInput>
-                            type="text"
-                            name="name"
-                            style="adminInputSecond"
-                            placeholder=" "
-                            required
-                        />
-                        <label htmlFor="name" className={labelStyle}>
-                            Fullname
-                        </label>
-                    </div>
-                    <div className="relative z-0 mb-6 w-1/2 ml-10">
                         <Input<UserInput>
                             type="tel"
                             name="phoneNumber"
@@ -78,17 +93,43 @@ export const AddUser: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="phoneNumber" className={labelStyle}>
+                        <label
+                            htmlFor="phoneNumber"
+                            className="table__label--admin"
+                        >
                             Phone number
                         </label>
                     </div>
+                    <div className="relative z-0 mb-6 w-1/2 ml-10">
+                        <Controller
+                            control={control}
+                            rules={{
+                                required: "Role is required!",
+                            }}
+                            render={({ field: { value } }) => (
+                                <ReactSelect<OptionType>
+                                    instanceId="roleSelector"
+                                    options={categoryOptions}
+                                    value={getValue(value)}
+                                    onChange={(value) => {
+                                        setValue("role", value?.value as Role);
+                                    }}
+                                    placeholder="Select role:"
+                                />
+                            )}
+                        ></Controller>
+                    </div>
                 </div>
-                <Button type="submit" style="addUserButton" className="mr-5">
-                    Submit
+                <Button type="submit" style="adminButton" className="mr-2">
+                    <span onClick={() => router.push("/admin/users")}>
+                        Submit
+                    </span>
                 </Button>
                 <Link href="/admin/users" passHref>
                     <a>
-                        <Button style="userTableButton">Back</Button>
+                        <Button type="button" style="adminCancelButton">
+                            Back
+                        </Button>
                     </a>
                 </Link>
             </form>

@@ -1,19 +1,23 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
 
-import { AdminHeader } from "components/Admin/AdminHeader";
-import { AdminAside } from "components/Admin/AdminAside";
-
+import { Header } from "components/Admin/Header";
+import { Aside } from "components/Admin/Aside";
 import AdminImg from "public/images/admin.png";
 
 const Admin = () => {
+    const { t } = useTranslation("admin");
+
     return (
         <Fragment>
-            <AdminHeader />
+            <Header />
             <div className="flex">
-                <AdminAside />
-                <div className="w-full flex flex-col items-center justify-center">
-                    <h1 className="text-center text-4xl m-10">Admin Page</h1>
+                <Aside />
+                <div className="w-4/5 flex flex-col items-center justify-center">
+                    <h1 className="text-center text-4xl m-10 text-black dark:text-white">
+                        {t("admin:title")}
+                    </h1>
                     <Image
                         src={AdminImg}
                         alt="Admin Img"

@@ -1,0 +1,12 @@
+{
+    "defaultLocale": "en-US",
+    "locales": ["en-US", "ua", "de"],
+    "pages": {
+        "*": ["common", "aside", "modal", "confirmation-modal", "input"],
+        "/admin": ["admin"],
+        "/admin/help": ["help"],
+        "/admin/users": ["user-table"],
+        "/admin/recipes": ["recipe-table"],
+        "/admin/history-of-incidents": ["history-of-incidents"]
+    }
+}

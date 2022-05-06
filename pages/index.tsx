@@ -11,6 +11,7 @@ import Test from "./testPage";
 import { signIn } from "next-auth/react";
 import { getToken } from "next-auth/jwt";
 import { getSavedToken } from "server/helpers/auth";
+import "../i18n";
 
 const Index: NextPage = () => {
     const { data, refetch } = useHelloQuery();

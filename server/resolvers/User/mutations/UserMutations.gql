@@ -3,6 +3,7 @@ input UserInput {
     password: String!
     name: String!
     phoneNumber: String!
+    role: Role!
 }
 
 input UserUpdateInput {
@@ -10,6 +11,7 @@ input UserUpdateInput {
     email: String!
     name: String!
     phoneNumber: String!
+    role: Role!
 }
 
 extend type Mutation {

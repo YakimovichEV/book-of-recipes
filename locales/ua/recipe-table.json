@@ -1,0 +1,13 @@
+{
+    "name": "Назва",
+    "description": "Опис",
+    "category": "Категорія",
+    "ingredients": "Інгредієнти",
+    "cooking-time": "Час приготування",
+    "instructions": "Інструкції",
+    "prep-time": "Час підготовки",
+    "serves": "Подача",
+    "tips": "Поради",
+    "edit": "Редагувати",
+    "delete": "Видалити"
+}

@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
 
-import { AdminHeader } from "components/Admin/AdminHeader";
-import { AdminAside } from "components/Admin/AdminAside";
-import { AdminSettings } from "components/Admin/AdminSettings";
+import { Header } from "components/Admin/Header";
+import { Aside } from "components/Admin/Aside";
+import { Settings } from "components/Admin/Settings";
 
 const AdminSettingsPage = () => {
     return (
         <Fragment>
-            <AdminHeader />
+            <Header />
             <div className="flex">
-                <AdminAside />
-                <AdminSettings />
+                <Aside />
+                <Settings />
             </div>
         </Fragment>
     );

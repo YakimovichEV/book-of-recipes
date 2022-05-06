@@ -12,15 +12,12 @@ import {
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
 
-const labelStyle =
-    "absolute text-sm text-gray500 dark:text-gray400 -translate-y-[30.9px] duration-300 mt-0 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-blue600 peer-focus:dark:text-blue500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30.9px]";
-
 export const AddRecipe: React.FC = () => {
     const [addRecipe] = useCreateOrUpdateRecipeMutation();
 
     const methods = useForm<RecipeInput>();
 
-    const { reset, handleSubmit, setValue, getValues } = methods;
+    const { reset, handleSubmit, setValue } = methods;
 
     const onSubmit = (data: RecipeInput) => {
         addRecipe({
@@ -34,7 +31,15 @@ export const AddRecipe: React.FC = () => {
 
     const animatedComponents = makeAnimated();
 
-    const categoryOptions = [
+    // const categoryOptions = ({ category }: RecipeInput) => {
+    //     const test = category.split(" ").map((cat) => {
+    //         console.log(cat);
+    //     });
+
+    //     return test;
+    // };
+
+    const options = [
         { value: "chocolate", label: "Chocolate" },
         { value: "strawberry", label: "Strawberry" },
         { value: "vanilla", label: "Vanilla" },
@@ -51,7 +56,7 @@ export const AddRecipe: React.FC = () => {
                         placeholder=" "
                         required
                     />
-                    <label htmlFor="name" className={labelStyle}>
+                    <label htmlFor="name" className="table__label--admin">
                         Name
                     </label>
                 </div>
@@ -63,7 +68,10 @@ export const AddRecipe: React.FC = () => {
                         placeholder=" "
                         required
                     />
-                    <label htmlFor="description" className={labelStyle}>
+                    <label
+                        htmlFor="description"
+                        className="table__label--admin"
+                    >
                         Description
                     </label>
                 </div>
@@ -76,7 +84,7 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="tips" className={labelStyle}>
+                        <label htmlFor="tips" className="table__label--admin">
                             Tips
                         </label>
                     </div>
@@ -88,7 +96,10 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="ingredients" className={labelStyle}>
+                        <label
+                            htmlFor="ingredients"
+                            className="table__label--admin"
+                        >
                             Ingredients
                         </label>
                     </div>
@@ -103,7 +114,10 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="cookingTime" className={labelStyle}>
+                        <label
+                            htmlFor="cookingTime"
+                            className="table__label--admin"
+                        >
                             Cooking Time
                         </label>
                     </div>
@@ -115,7 +129,10 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="instructions" className={labelStyle}>
+                        <label
+                            htmlFor="instructions"
+                            className="table__label--admin"
+                        >
                             Instructions
                         </label>
                     </div>
@@ -130,7 +147,10 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="prepTime" className={labelStyle}>
+                        <label
+                            htmlFor="prepTime"
+                            className="table__label--admin"
+                        >
                             Prep. Time
                         </label>
                     </div>
@@ -143,7 +163,7 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="serves" className={labelStyle}>
+                        <label htmlFor="serves" className="table__label--admin">
                             Serves
                         </label>
                     </div>
@@ -157,25 +177,28 @@ export const AddRecipe: React.FC = () => {
                             placeholder=" "
                             required
                         />
-                        <label htmlFor="image" className={labelStyle}>
+                        <label htmlFor="image" className="table__label--admin">
                             Upload Image
                         </label>
                     </div>
                     <div className="mb-6 w-1/2 ml-10">
                         <Select
                             isMulti
-                            options={categoryOptions}
+                            options={options}
+                            onChange={({ category }: RecipeInput) => {
+                                setValue("category", category);
+                            }}
                             placeholder="Choose category:"
                             components={animatedComponents}
                         />
                     </div>
                 </div>
-                <Button type="submit" style="addUserButton" className="mr-5">
+                <Button type="submit" style="adminButton" className="mr-2">
                     Submit
                 </Button>
                 <Link href="/admin/recipes" passHref>
                     <a>
-                        <Button style="userTableButton">Back</Button>
+                        <Button style="adminCancelButton">Back</Button>
                     </a>
                 </Link>
             </form>

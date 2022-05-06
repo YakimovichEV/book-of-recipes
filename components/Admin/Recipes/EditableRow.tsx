@@ -59,7 +59,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="table-row w-full"
             >
-                <div className="table-cell w-56 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="w-56 table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="name"
@@ -67,7 +67,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a name..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="description"
@@ -75,7 +75,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter an email..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="description"
@@ -83,7 +83,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="ingredients"
@@ -91,7 +91,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="number"
                         name="cookingTime"
@@ -99,7 +99,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="instructions"
@@ -107,7 +107,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="number"
                         name="prepTime"
@@ -115,7 +115,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="number"
                         name="serves"
@@ -123,7 +123,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         placeholder="Enter a phone number..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<RecipeEditableRow>
                         type="text"
                         name="tips"
@@ -132,7 +132,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                     />
                 </div>
 
-                <div className="table-cell px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Button type="submit" style="userTableButton">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +150,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         </svg>
                     </Button>
                 </div>
-                <div className="table-cell px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-6 h-6 text-red-400 cursor-pointer"

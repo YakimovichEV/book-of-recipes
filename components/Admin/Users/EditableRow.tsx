@@ -1,7 +1,11 @@
 import React from "react";
+import Select from "react-select";
 import { useForm, FormProvider } from "react-hook-form";
 
-import { useUpdateUserDataMutation } from "../../../client/generated/graphql";
+import {
+    useUpdateUserDataMutation,
+    Role,
+} from "../../../client/generated/graphql";
 import { User } from "./types";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
@@ -12,6 +16,11 @@ interface InputProps {
     setIsEditing: (state: false) => void;
 }
 
+interface OptionType {
+    value: string;
+    label: string;
+}
+
 type UserEditableRow = InputProps["user"];
 
 export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
@@ -19,9 +28,15 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
 
     const methods = useForm<UserEditableRow>({ defaultValues: user });
 
-    const { handleSubmit } = methods;
+    const { handleSubmit, setValue } = methods;
 
-    const onSubmit = ({ id, email, name, phoneNumber }: UserEditableRow) => {
+    const onSubmit = ({
+        id,
+        email,
+        name,
+        phoneNumber,
+        role,
+    }: UserEditableRow) => {
         updateUser({
             variables: {
                 user: {
@@ -29,11 +44,17 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                     email,
                     name,
                     phoneNumber,
+                    role,
                 },
             },
             onCompleted: () => setIsEditing(false),
         });
     };
+
+    const categoryOptions = Object.values(Role).map((role) => ({
+        value: role,
+        label: role,
+    }));
 
     return (
         <FormProvider {...methods}>
@@ -42,7 +63,17 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="table-row w-full"
             >
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="w-52 table__editable-cell--admin">
+                    <Select<OptionType>
+                        instanceId="roleSelector"
+                        value={categoryOptions}
+                        onChange={(value) => {
+                            setValue("role", value?.value as Role);
+                        }}
+                        placeholder="Select role:"
+                    />
+                </div>
+                <div className="table__editable-cell--admin">
                     <Input<UserEditableRow>
                         type="text"
                         name="name"
@@ -50,7 +81,7 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                         placeholder="Enter a name..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<UserEditableRow>
                         type="email"
                         name="email"
@@ -58,7 +89,7 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                         placeholder="Enter an email..."
                     />
                 </div>
-                <div className="table-cell w-96 px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="table__editable-cell--admin">
                     <Input<UserEditableRow>
                         type="tel"
                         name="phoneNumber"
@@ -67,7 +98,7 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                     />
                 </div>
 
-                <div className="table-cell px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="w-32 table__editable-cell--admin">
                     <Button type="submit" style="userTableButton">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +116,7 @@ export const EditableRow: React.FC<InputProps> = ({ user, setIsEditing }) => {
                         </svg>
                     </Button>
                 </div>
-                <div className="table-cell px-6 py-3 whitespace-no-wrap border-b border-gray200">
+                <div className="w-32 table__editable-cell--admin">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-6 h-6 text-red-400 cursor-pointer"

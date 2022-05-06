@@ -1,0 +1,7 @@
+.header--admin {
+    @apply flex items-center justify-between h-16 px-6 w-full mb-7 shadow-md bg-white dark:bg-[#18181B];
+}
+
+.header__icon--admin {
+    @apply bg-[#1F1F23] rounded-full p-2 dark:bg-gray600 cursor-pointer;
+}

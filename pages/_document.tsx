@@ -19,9 +19,9 @@ class MyDocument extends Document {
                 <Head>
                     <link rel="favicon" href="/favicon.ico" />
                 </Head>
-                <body>
-                    {/* <div id="login" /> */}
+                <body className="light">
                     <Main />
+                    <div id="modal" />
                     <NextScript />
                 </body>
             </Html>

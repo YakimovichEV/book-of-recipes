@@ -12,9 +12,9 @@ const btnClasses = {
     disabledButton:
         "bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed",
     adminButton:
-        "flex items-center px-2 py-1 text-sm text-blue700 uppercase border border-blue-700 rounded-sm hover:bg-gray100",
-    addUserButton:
-        "text-white bg-blue700 hover:bg-blue800 focus:ring-4 focus:ring-blue300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue600 dark:hover:bg-blue700 dark:focus:ring-blue800",
+        "inline-block px-6 py-2.5 bg-blue600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
+    adminCancelButton:
+        "inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out",
     searchButton:
         "flex items-center px-6 py-1 text-gray600 bg-gray100 border border-gray300 rounded-tr-sm rounded-br-sm hover:bg-gray200",
     userTableButton: "bg-transparent w-0 h-0",
