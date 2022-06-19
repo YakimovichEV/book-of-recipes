@@ -1,5 +1,6 @@
 type Recipe {
     id: ID!
+    category: Category!
     name: String!
     description: String!
     image: String!
