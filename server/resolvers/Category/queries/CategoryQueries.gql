@@ -9,6 +9,6 @@ type Category {
 }
 
 extend type Query {
-    getCategories: [Category]!
+    getCategoryList(search: String, page: Int): [Category]!
     getCategory(categoryId: ID!): Category
 }
