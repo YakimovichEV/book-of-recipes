@@ -19,6 +19,7 @@ import {
 import { ApolloContext } from "../../@types/graphql";
 import { GraphQLUpload } from "graphql-upload";
 import { UserWithFieldResolvers } from "./User/User";
+import { getCategoryList } from "./Category/queries/getCategoryList";
 
 export const ApolloResolvers: Resolvers = {
     Query: {
@@ -27,6 +28,7 @@ export const ApolloResolvers: Resolvers = {
         getRecipeList,
         getRecipe,
         getCategory,
+        getCategoryList,
     },
     Mutation: {
         createOrUpdateRecipe,

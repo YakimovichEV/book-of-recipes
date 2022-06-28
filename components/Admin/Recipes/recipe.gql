@@ -13,8 +13,8 @@ query GetRecipeList {
     }
 }
 
-query GetCategoriesList {
-    getCategories {
+query GetCategoriesList($search: String, $page: Int) {
+    getCategoryList(search: $search, page: $page) {
         id
         name
     }
