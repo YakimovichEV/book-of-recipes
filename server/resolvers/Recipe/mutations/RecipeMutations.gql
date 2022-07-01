@@ -1,7 +1,7 @@
 input RecipeInput {
     name: String!
     description: String!
-    image: String!
+    image: Upload!
     prepTime: Int!
     cookingTime: Int!
     serves: Int!
