@@ -8,8 +8,8 @@ type User {
     email: String!
     name: String!
     firstName: String!
-    role: Role!
-    phoneNumber: String!
+    role: Role
+    phoneNumber: String
 }
 
 extend type Query {
