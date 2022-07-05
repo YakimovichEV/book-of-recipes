@@ -29,7 +29,7 @@ export class User {
     version = 1;
 
     @Property({ type: "string" })
-    phoneNumber!: string;
+    phoneNumber?: string;
 
     @Enum({ items: () => Role, default: Role.User, type: "string" })
     role = Role.User;
