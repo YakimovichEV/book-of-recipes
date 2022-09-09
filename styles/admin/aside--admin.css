@@ -3,9 +3,9 @@
 }
 
 .header__link--admin {
-    @apply flex items-center px-6 py-3 text-sm text-black dark:text-[#E2EFF1] hover:bg-gray100 dark:hover:bg-[#26262C];
+    @apply flex items-center px-6 py-3 text-sm text-black dark:text-[#E2EFF1] hover:bg-gray-100 dark:hover:bg-[#26262C];
 }
 
 .header__date--admin {
-    @apply px-6 py-4 space-y-4 text-xs font-semibold text-gray600 dark:text-[#E2EFF1];
+    @apply px-6 py-4 space-y-4 text-xs font-semibold text-gray-600 dark:text-[#E2EFF1];
 }

@@ -2,11 +2,23 @@
     "defaultLocale": "en-US",
     "locales": ["en-US", "ua", "de"],
     "pages": {
-        "*": ["common", "aside", "modal", "confirmation-modal", "input"],
+        "*": [
+            "common",
+            "aside",
+            "modal",
+            "confirmation-modal",
+            "input",
+            "sidebar",
+            "user",
+            "footer"
+        ],
+
         "/admin": ["admin"],
         "/admin/help": ["help"],
         "/admin/users": ["user-table"],
         "/admin/recipes": ["recipe-table"],
-        "/admin/history-of-incidents": ["history-of-incidents"]
+        "/admin/history-of-incidents": ["history-of-incidents"],
+
+        "/recipes": ["recipes"]
     }
 }

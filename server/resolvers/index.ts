@@ -11,6 +11,7 @@ import { createOrUpdateRecipe } from "./Recipe/mutations/createOrUpdateRecipe";
 import { deleteRecipe } from "./Recipe/mutations/deleteRecipe";
 import { createOrUpdateCategory } from "./Category/mutations/createOrUpdateCategory";
 import { getCategory } from "./Category/queries/getCategory";
+import { getMe } from "./User/queries/me";
 import {
     childCategories,
     parentCategory,
@@ -29,6 +30,7 @@ export const ApolloResolvers: Resolvers = {
         getRecipe,
         getCategory,
         getCategoryList,
+        me: getMe,
     },
     Mutation: {
         createOrUpdateRecipe,

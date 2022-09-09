@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { Button } from "components/Button/Button";
+import { Button } from "components/common";
 
-const Home = () => {
+const Home: NextPage = () => {
     const { pathname, push } = useRouter();
 
     useEffect(() => {

@@ -14,7 +14,7 @@ export const History: React.FC = () => {
                 <h2 className="history__subtitle--admin">
                     {t("history-of-incidents:may")} 2022
                 </h2>
-                <hr className="border border-gray300 my-3" />
+                <hr className="border border-gray-300 my-3" />
                 <p className="history__incidents--admin">
                     {t("history-of-incidents:no-incidents")}
                 </p>
@@ -24,7 +24,7 @@ export const History: React.FC = () => {
                 <h2 className="history__subtitle--admin">
                     {t("history-of-incidents:april")} 2022
                 </h2>
-                <hr className="border border-gray300 my-3" />
+                <hr className="border border-gray-300 my-3" />
                 <p className="history__incidents--admin">
                     {t("history-of-incidents:no-incidents")}
                 </p>
@@ -34,7 +34,7 @@ export const History: React.FC = () => {
                 <h2 className="history__subtitle--admin">
                     {t("history-of-incidents:march")} 2022
                 </h2>
-                <hr className="border border-gray300 my-3" />
+                <hr className="border border-gray-300 my-3" />
                 <p className="history__incidents--admin">
                     {t("history-of-incidents:no-incidents")}
                 </p>
@@ -44,7 +44,7 @@ export const History: React.FC = () => {
                 <h2 className="history__subtitle--admin">
                     {t("history-of-incidents:february")} 2022
                 </h2>
-                <hr className="border border-gray300 my-3" />
+                <hr className="border border-gray-300 my-3" />
                 <p className="history__incidents--admin">
                     {t("history-of-incidents:no-incidents")}
                 </p>
@@ -54,7 +54,7 @@ export const History: React.FC = () => {
                 <h2 className="history__subtitle--admin">
                     {t("history-of-incidents:january")} 2022
                 </h2>
-                <hr className="border border-gray300 my-3" />
+                <hr className="border border-gray-300 my-3" />
                 <p className="history__incidents--admin">
                     {t("history-of-incidents:no-incidents")}
                 </p>

@@ -2,14 +2,11 @@ import React, { Fragment, useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 
-import { Row } from "./Row";
-import { useGetUserListQuery } from "../../../client/generated/graphql";
-import { Spinner } from "components/Spinner/Spinner";
-import { Button } from "components/Button/Button";
-import { Pagination } from "components/Pagination/Pagination";
-import { SearchField } from "components/SearchField/SearchField";
+import { Row } from "./index";
 import { useDebounce } from "client/hooks/useDebounce";
 import { Order, useOrderBy } from "client/hooks/useOrderBy";
+import { useGetUserListQuery } from "../../../client/generated/graphql";
+import { Button, Pagination, SearchField, Spinner } from "components/common";
 
 export const UserTable: React.FC = () => {
     const [query, setQuery] = useState<string>("");
@@ -27,7 +24,8 @@ export const UserTable: React.FC = () => {
         [],
     );
 
-    // Сортировка столбика // ЗБЕРЕГТИ ЗМІНИ
+    const orderBy = () => setOrder(order === "asc" ? "desc" : "asc");
+
     const filteredData = useMemo(
         () =>
             data?.getUserList?.filter((element) => {
@@ -46,6 +44,10 @@ export const UserTable: React.FC = () => {
         Exclude<typeof filteredData, undefined>[number]
     >(filteredData || [], order, "name");
 
+    const mappedData = sortedData.map((user) => (
+        <Row key={user.id} user={user} />
+    ));
+
     if (loading) {
         return (
             <div className="flex items-center justify-center">
@@ -55,9 +57,8 @@ export const UserTable: React.FC = () => {
     }
 
     return (
-        <Fragment>
+        <>
             <div className="px-6 py-4 flex items-center justify-end">
-                {/* <DropDown /> */}
                 <div className="flex items-stretch justify-center w-96">
                     <SearchField onChange={onChange} />
                 </div>
@@ -70,11 +71,23 @@ export const UserTable: React.FC = () => {
                         </div>
                         <div
                             className="w-96 cursor-pointer user-table__header--admin"
-                            onClick={() =>
-                                setOrder(order === "asc" ? "desc" : "asc")
-                            }
+                            onClick={orderBy}
                         >
                             {t("user-table:name")}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5 ml-3"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                                />
+                            </svg>
                         </div>
                         <div className="w-96 user-table__header--admin">
                             {t("user-table:email")}
@@ -90,25 +103,23 @@ export const UserTable: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="table-row-group relative">
-                    {sortedData.map((user) => (
-                        <Row key={user.id} user={user} />
-                    ))}
-                    {!sortedData.length && <h1>No matches were found</h1>}
-                </div>
+                <div className="table-row-group relative">{mappedData}</div>
             </div>
+            {!sortedData.length && (
+                <h1 className="no-matches">{t("user-table:no-matches")} 😕</h1>
+            )}
             <div className="flex justify-between">
                 <div className="px-6 py-4">
                     <Link href="/admin/users/add-user" passHref>
                         <a>
                             <Button type="button" style="adminButton">
-                                Add User
+                                {t("user-table:add-user")}
                             </Button>
                         </a>
                     </Link>
                 </div>
                 <Pagination />
             </div>
-        </Fragment>
+        </>
     );
 };

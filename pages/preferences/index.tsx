@@ -1,16 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import { NextPage } from "next";
 
+import { Button, ToggleButton } from "components/common";
 import { SpiceRating } from "components/Rating/SpiceRating";
 import { VeganRating } from "components/Rating/VeganRating";
 import { ChooseDifficulty } from "components/Rating/ChooseDifficulty";
-import { ToggleButton } from "components/ToggleButton/ToggleButton";
-import { Button } from "components/Button/Button";
 
-const Preferences = () => {
+const Preferences: NextPage = () => {
     return (
         <div className="container mx-auto primary-font">
-            <h2 className="text-5xl text-green text-center mt-5 sm:text-6xl md:text-8xl md:my-10">
+            <h2 className="text-5xl text-sacramento text-center mt-5 sm:text-6xl md:text-8xl md:my-10">
                 Preferences
             </h2>
             <div className="flex flex-col w-72 mx-auto sm:w-96 lg:w-3/5">
@@ -65,7 +65,7 @@ const Preferences = () => {
                     </Link>
                 </div>
 
-                <h2 className="text-center second-font text-2xl text-green my-8 sm:text-3xl md:text-4xl xl:text-right xl:mt-32">
+                <h2 className="text-center second-font text-2xl text-sacramento my-8 sm:text-3xl md:text-4xl xl:text-right xl:mt-32">
                     You can&nbsp;
                     <span className="text-dijon underline">
                         <Link href="/testPage">skip</Link>

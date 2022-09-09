@@ -4,5 +4,7 @@
     "email": "Email",
     "phone": "Telefon",
     "edit": "Bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "no-matches": "Es wurden keine Übereinstimmungen gefunden",
+    "add-user": "Benutzer hinzufügen"
 }

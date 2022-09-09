@@ -6,6 +6,8 @@
 @import "./admin/history--admin.css";
 @import "./admin/table--admin.css";
 
+@import "./phoneNumber.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +19,11 @@
 
     body {
         @apply bg-[#F7F8FC] dark:bg-[#0E0E10];
+        transition: all 0.7s ease-out;
+    }
+
+    .main {
+        min-height: calc(100vh - 80px);
     }
 
     svg {
@@ -47,8 +54,15 @@
         font-size: 350px;
     }
 
-    .btn-close {
-        background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 fill=%22%23000%22%3E%3Cpath d=%22M.293.293a1 1 0 011.414.0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293A1 1 0 01.293 14.293L6.586 8 .293 1.707a1 1 0 010-1.414z%22/%3E%3C/svg%3E")
-            50%/1em no-repeat;
+    .react-select__control {
+        background-color: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        border-bottom: 1px solid #66676e !important;
+        box-shadow: none !important;
+    }
+
+    .react-select__control--menu-is-open {
+        border-color: #e42c64 !important;
     }
 }

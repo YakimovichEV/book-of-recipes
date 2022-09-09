@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import useTranslation from "next-translate/useTranslation";
 
 import { Recipe } from "./types";
@@ -6,9 +6,8 @@ import {
     GetRecipeListDocument,
     useDeleteRecipeMutation,
 } from "client/generated/graphql";
-import { Modal } from "components/Modal/Modal";
 import { useModal } from "client/hooks/useModal";
-import { ConfirmationModal } from "components/Modal/ConfirmationModal";
+import { Modal, ConfirmationModal } from "components/common";
 
 interface InputProps {
     recipe: Recipe;
@@ -40,10 +39,10 @@ export const ReadOnlyRow: React.FC<InputProps> = ({
         <ConfirmationModal message={t("confirmation-modal:content")} />
     );
 
-    const headerText = <Fragment>{t("confirmation-modal:header")}</Fragment>;
+    const headerText = <>{t("confirmation-modal:header")}</>;
 
     return (
-        <Fragment>
+        <>
             <Modal
                 isShown={isShown}
                 hide={toggle}
@@ -68,7 +67,7 @@ export const ReadOnlyRow: React.FC<InputProps> = ({
                     <svg
                         onClick={() => handleEditClick()}
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-blue500 cursor-pointer"
+                        className="w-6 h-6 text-blue-500 cursor-pointer"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -100,6 +99,6 @@ export const ReadOnlyRow: React.FC<InputProps> = ({
                     </svg>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 };

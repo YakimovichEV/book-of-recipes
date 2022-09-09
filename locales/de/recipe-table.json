@@ -9,5 +9,7 @@
     "serves": "Dient",
     "tips": "Tipps",
     "edit": "Bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "add-recipe": "Rezept hinzufügen",
+    "no-matches": "Es wurden keine Übereinstimmungen gefunden"
 }

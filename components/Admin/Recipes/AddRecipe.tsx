@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { useForm, FormProvider } from "react-hook-form";
 
@@ -8,16 +7,39 @@ import {
     RecipeInput,
     GetRecipeListDocument,
     useCreateOrUpdateRecipeMutation,
+    useGetCategoriesListQuery,
 } from "client/generated/graphql";
-import { Input } from "../../Input/Input";
-import { Button } from "../../Button/Button";
+import { ImageUpload } from "../../Forms/ImageUpload";
+import { Button, Input, SelectInput } from "components/common";
+
+type CategoryType = {
+    __typename?: "Category" | undefined;
+    id: string;
+    name: string;
+};
+
+type Category = CategoryType | null | undefined;
 
 export const AddRecipe: React.FC = () => {
     const [addRecipe] = useCreateOrUpdateRecipeMutation();
+    const { data } = useGetCategoriesListQuery();
 
-    const methods = useForm<RecipeInput>();
+    const methods = useForm<RecipeInput>({
+        mode: "all",
+    });
 
     const { reset, handleSubmit, setValue } = methods;
+
+    const animatedComponents = makeAnimated();
+
+    const categoryOptions = data?.getCategoryList.map((category: Category) => ({
+        value: category?.id,
+        label: category?.name,
+    }));
+
+    const onChange = (value: any) => {
+        setValue("category", value);
+    };
 
     const onSubmit = (data: RecipeInput) => {
         addRecipe({
@@ -28,22 +50,6 @@ export const AddRecipe: React.FC = () => {
             refetchQueries: [GetRecipeListDocument],
         });
     };
-
-    const animatedComponents = makeAnimated();
-
-    // const categoryOptions = ({ category }: RecipeInput) => {
-    //     const test = category.split(" ").map((cat) => {
-    //         console.log(cat);
-    //     });
-
-    //     return test;
-    // };
-
-    const options = [
-        { value: "chocolate", label: "Chocolate" },
-        { value: "strawberry", label: "Strawberry" },
-        { value: "vanilla", label: "Vanilla" },
-    ];
 
     return (
         <FormProvider {...methods}>
@@ -169,25 +175,16 @@ export const AddRecipe: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div className="relative z-0 mb-6 w-1/2">
-                        <Input<RecipeInput>
-                            type="text"
-                            name="image"
-                            style="adminInputSecond"
-                            placeholder=" "
-                            required
-                        />
-                        <label htmlFor="image" className="table__label--admin">
-                            Upload Image
-                        </label>
+                    <div className="flex items-center z-0 mb-6 w-1/2">
+                        <ImageUpload />
                     </div>
                     <div className="mb-6 w-1/2 ml-10">
-                        <Select
+                        <SelectInput
                             isMulti
-                            options={options}
-                            onChange={({ category }: RecipeInput) => {
-                                setValue("category", category);
-                            }}
+                            name="select"
+                            options={categoryOptions}
+                            instanceId="select"
+                            onChange={onChange}
                             placeholder="Choose category:"
                             components={animatedComponents}
                         />

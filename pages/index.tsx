@@ -7,7 +7,6 @@ import {
 import { addApolloState, initializeApollo } from "client/hocs/apollo/client";
 import { GetServerSideProps, NextPage } from "next";
 
-import Test from "./testPage";
 import { signIn } from "next-auth/react";
 import { getToken } from "next-auth/jwt";
 import { getSavedToken } from "server/helpers/auth";
@@ -31,7 +30,6 @@ const Index: NextPage = () => {
                 Login ||
             </button>
             <button onClick={() => refetch()}> refetch </button>
-            <Test />
         </div>
     );
 };

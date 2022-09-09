@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import ReactSelect from "react-select";
 import { useRouter } from "next/router";
-import { useForm, FormProvider, Controller } from "react-hook-form";
+import makeAnimated from "react-select/animated";
+import { useForm, FormProvider } from "react-hook-form";
+import ReactSelect, { OnChangeValue } from "react-select";
 
 import {
     GetUserListDocument,
@@ -10,8 +11,7 @@ import {
     UserInput,
     Role,
 } from "client/generated/graphql";
-import { Input } from "components/Input/Input";
-import { Button } from "components/Button/Button";
+import { Button, Input } from "components/common";
 
 interface OptionType {
     value: string;
@@ -19,13 +19,17 @@ interface OptionType {
 }
 
 export const AddUser: React.FC = () => {
+    const [currentCategories, setCurrentCategories] = useState<string[]>([""]);
+
     const [addUser] = useCreateUserMutation();
 
     const router = useRouter();
 
     const methods = useForm<UserInput>();
 
-    const { handleSubmit, reset, setValue, control } = methods;
+    const { handleSubmit, reset } = methods;
+
+    const animatedComponents = makeAnimated();
 
     const onSubmit = (data: UserInput) => {
         addUser({
@@ -37,13 +41,22 @@ export const AddUser: React.FC = () => {
         });
     };
 
-    const categoryOptions = Object.values(Role).map((role) => ({
+    const categoryOptions: OptionType[] = Object.values(Role).map((role) => ({
         value: role,
         label: role,
     }));
 
-    const getValue = (value: string) =>
-        value ? categoryOptions.find((option) => option.value === value) : "";
+    const getValue = currentCategories
+        ? categoryOptions.filter(
+              (category) => currentCategories.indexOf(category.value) >= 0,
+          )
+        : [];
+
+    const onChange = (newValue: OnChangeValue<OptionType, boolean>) => {
+        setCurrentCategories(
+            (newValue as OptionType[]).map((value) => value.value),
+        );
+    };
 
     return (
         <FormProvider {...methods}>
@@ -101,23 +114,16 @@ export const AddUser: React.FC = () => {
                         </label>
                     </div>
                     <div className="relative z-0 mb-6 w-1/2 ml-10">
-                        <Controller
-                            control={control}
-                            rules={{
-                                required: "Role is required!",
-                            }}
-                            render={({ field: { value } }) => (
-                                <ReactSelect<OptionType>
-                                    instanceId="roleSelector"
-                                    options={categoryOptions}
-                                    value={getValue(value)}
-                                    onChange={(value) => {
-                                        setValue("role", value?.value as Role);
-                                    }}
-                                    placeholder="Select role:"
-                                />
-                            )}
-                        ></Controller>
+                        <ReactSelect<OptionType>
+                            classNamePrefix="react-select"
+                            instanceId="roleSelector"
+                            options={categoryOptions}
+                            value={getValue}
+                            onChange={onChange}
+                            placeholder="Select role:"
+                            components={animatedComponents}
+                            isMulti
+                        />
                     </div>
                 </div>
                 <Button type="submit" style="adminButton" className="mr-2">

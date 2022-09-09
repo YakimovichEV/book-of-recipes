@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
-
-import { LeafIcon } from "../Icons/LeafIcon/LeafIcon";
-import { LeafIconFilled } from "../Icons/LeafIcon/LeafIconFilled";
+import { FaLeaf } from "react-icons/fa";
 
 export const VeganRating: React.FC = () => {
     const [rating, setRating] = useState(0);
@@ -16,8 +14,8 @@ export const VeganRating: React.FC = () => {
             onClick={handleRating}
             ratingValue={rating}
             transition
-            emptyIcon={<LeafIcon />}
-            fullIcon={<LeafIconFilled />}
+            emptyIcon={<FaLeaf size={35} color="black" />}
+            fullIcon={<FaLeaf size={35} color="#cbeaa6" />}
         />
     );
 };

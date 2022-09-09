@@ -6,9 +6,9 @@ export const ChooseDifficulty: React.FC = () => {
             <div className="flex items-center my-2 xl:my-0">
                 <input
                     type="checkbox"
-                    className="w-10 h-10 rounded-full bg-white text-lightGreen cursor-pointer border-gray border-4 focus:ring-0 focus:ring-offset-0 2xl:w-12 2xl:h-12 mr-3"
+                    className="w-10 h-10 rounded-full bg-white text-menthol cursor-pointer border-gray border-4 focus:ring-0 focus:ring-offset-0 2xl:w-12 2xl:h-12 mr-3"
                 />
-                <label className="form-check-label inline-block text-lightGreen">
+                <label className="form-check-label inline-block text-menthol">
                     Easy
                 </label>
             </div>

@@ -2,14 +2,12 @@ import React from "react";
 import Select from "react-select";
 import { useForm, FormProvider } from "react-hook-form";
 
+import { User } from "./types";
 import {
     useUpdateUserDataMutation,
     Role,
 } from "../../../client/generated/graphql";
-import { User } from "./types";
-import { Input } from "../../Input/Input";
-import { Button } from "../../Button/Button";
-import { Spinner } from "components/Spinner/Spinner";
+import { Button, Input, Spinner } from "components/common";
 
 interface InputProps {
     user: User;

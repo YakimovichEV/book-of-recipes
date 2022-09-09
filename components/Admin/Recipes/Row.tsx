@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-import { EditableRow } from "./EditableRow";
-import { ReadOnlyRow } from "./ReadOnlyRow";
 import { Recipe } from "./types";
+import { EditableRow, ReadOnlyRow } from "./index";
 
 interface InputProps {
     recipe: Recipe;

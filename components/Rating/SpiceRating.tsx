@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
-
-import { PepperIcon } from "components/Icons/PepperIcon/PepperIcon";
-import { PepperIconFilled } from "components/Icons/PepperIcon/PepperIconFilled";
+import { FaPepperHot } from "react-icons/fa";
 
 export const SpiceRating: React.FC = () => {
     const [rating, setRating] = useState(0);
@@ -16,8 +14,8 @@ export const SpiceRating: React.FC = () => {
             onClick={handleRating}
             ratingValue={rating}
             transition
-            emptyIcon={<PepperIcon />}
-            fullIcon={<PepperIconFilled />}
+            emptyIcon={<FaPepperHot size={35} color="black" />}
+            fullIcon={<FaPepperHot size={35} color="f41f1f" />}
         />
     );
 };

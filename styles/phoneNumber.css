@@ -1,0 +1,27 @@
+.phone-input {
+    width: 100% !important;
+    height: 40px !important;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05) !important;
+    border-width: 1px;
+    border-color: rgb(209 213 219) !important;
+    border-radius: 0 !important;
+
+    @apply dark:bg-outerSpace placeholder:text-gray-600 dark:placeholder:text-gray-300 dark:focus:text-gray-400 dark:border-none !important;
+}
+
+.hello,
+.react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus,
+.react-tel-input .flag-dropdown.open .selected-flag {
+    @apply bg-white dark:bg-outerSpace dark:border-none !important;
+}
+
+.search,
+.country.highlight,
+.country:hover {
+    @apply dark:bg-eerieBlack !important;
+}
+
+.search input {
+    @apply dark:bg-outerSpace !important;
+}

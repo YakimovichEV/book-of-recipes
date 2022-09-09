@@ -19,7 +19,7 @@ class MyDocument extends Document {
                 <Head>
                     <link rel="favicon" href="/favicon.ico" />
                 </Head>
-                <body className="light">
+                <body>
                     <Main />
                     <div id="modal" />
                     <NextScript />

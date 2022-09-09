@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
+import { NextPage } from "next";
 
 import { AddUser } from "components/Admin/Users/AddUser";
-import { Header } from "components/Admin/Header";
-import { Aside } from "components/Admin/Aside";
+import { Aside, Header } from "components/Admin";
 
-const AddUserPage = () => {
+const AddUserPage: NextPage = () => {
     return (
         <Fragment>
             <Header />

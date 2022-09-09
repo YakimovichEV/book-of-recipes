@@ -13,6 +13,7 @@ generates:
             - "typescript"
             - "typescript-operations"
             - "typescript-react-apollo"
+            - "named-operations-object"
 
     ./server/generated/graphql.ts:
         config:

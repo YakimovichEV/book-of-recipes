@@ -1,6 +1,7 @@
 import React from "react";
+import { NextPage } from "next";
 
-const index = () => {
+const About: NextPage = () => {
     return (
         <div>
             <h1>About us</h1>
@@ -8,4 +9,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default About;

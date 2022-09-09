@@ -15,7 +15,7 @@ export const ThirdCuisine: React.FC = () => {
     };
 
     return (
-        <div className="group relative w-72 h-2/5 m-5 bg-dijon shadow-xl rounded-tl-2xl rounded-br-2xl flex items-center justify-center border-4 border-dark overflow-hidden 2xl:w-96">
+        <div className="group relative w-72 h-2/5 m-5 bg-dijon shadow-xl rounded-tl-2xl rounded-br-2xl flex items-center justify-center border-4 border-darkJungle overflow-hidden 2xl:w-96">
             <div className="relative flex justify-center items-center flex-col duration-500 h-full">
                 <Image
                     src={ThirdPreferences}
@@ -64,7 +64,7 @@ export const ThirdCuisine: React.FC = () => {
                         type="checkbox"
                         checked={isChecked}
                         onChange={handleOnChange}
-                        className="w-14 h-14 rounded-full bg-green text-dijon cursor-pointer border-black border-4 focus:ring-0 focus:ring-offset-0 2xl:w-16 2xl:h-16"
+                        className="w-14 h-14 rounded-full bg-sacramento text-dijon cursor-pointer border-black border-4 focus:ring-0 focus:ring-offset-0 2xl:w-16 2xl:h-16"
                     />
                 </label>
             </div>

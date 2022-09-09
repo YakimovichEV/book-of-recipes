@@ -9,5 +9,7 @@
     "serves": "Serves",
     "tips": "Tips",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "add-recipe": "Add recipe",
+    "no-matches": "No matches were found"
 }

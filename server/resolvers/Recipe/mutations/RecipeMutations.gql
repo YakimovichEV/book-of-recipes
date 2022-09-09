@@ -8,7 +8,7 @@ input RecipeInput {
     ingredients: [String!]!
     instructions: [String!]!
     tips: [String!]!
-    category: ID!
+    category: [ID!]!
 }
 
 extend type Mutation {

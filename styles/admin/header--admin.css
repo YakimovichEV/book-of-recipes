@@ -3,5 +3,5 @@
 }
 
 .header__icon--admin {
-    @apply bg-[#1F1F23] rounded-full p-2 dark:bg-gray600 cursor-pointer;
+    @apply bg-[#1F1F23] rounded-full p-2 dark:bg-gray-600 cursor-pointer;
 }

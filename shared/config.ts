@@ -3,4 +3,5 @@ export const appConfig = {
     IS_SERVER: typeof window === "undefined",
     MONGODB_URL: process.env.DB_URL,
     IS_PRODUCTION: process.env.NODE_ENV === "production",
+    CLIENT_URL: process.env.NEXTAUTH_URL,
 } as const;

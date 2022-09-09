@@ -1,11 +1,9 @@
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
-import { useCreateOrUpdateRecipeMutation } from "../../../client/generated/graphql";
 import { Recipe } from "./types";
-import { Input } from "../../Input/Input";
-import { Button } from "../../Button/Button";
-import { Spinner } from "components/Spinner/Spinner";
+import { Button, Spinner, Input } from "components/common";
+import { useCreateOrUpdateRecipeMutation } from "../../../client/generated/graphql";
 
 interface InputProps {
     recipe: Recipe;
@@ -72,7 +70,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="text"
                         name="description"
                         style="adminInputSecond"
-                        placeholder="Enter an email..."
+                        placeholder="Enter a description..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -80,7 +78,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="text"
                         name="description"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter a description..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -88,7 +86,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="text"
                         name="ingredients"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter the ingredients..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -96,7 +94,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="number"
                         name="cookingTime"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter a cooking time..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -104,7 +102,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="text"
                         name="instructions"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter the instructions..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -112,7 +110,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="number"
                         name="prepTime"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter a prep. time..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -120,7 +118,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="number"
                         name="serves"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter the number of serves..."
                     />
                 </div>
                 <div className="table__editable-cell--admin">
@@ -128,7 +126,7 @@ export const EditableRow: React.FC<InputProps> = ({ recipe, setIsEditing }) => {
                         type="text"
                         name="tips"
                         style="adminInputSecond"
-                        placeholder="Enter a phone number..."
+                        placeholder="Enter the tips..."
                     />
                 </div>
 

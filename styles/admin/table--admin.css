@@ -7,15 +7,19 @@
 }
 
 .table__label--admin {
-    @apply absolute text-sm text-gray500 dark:text-gray400 -translate-y-[30.9px] duration-300 mt-0 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-blue600 peer-focus:dark:text-blue500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30.9px];
+    @apply absolute text-sm text-gray-500 dark:text-gray-400 -translate-y-[30.9px] duration-300 mt-0 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30.9px];
 }
 
 .table__cell--admin {
-    @apply table-cell w-96 px-6 py-[20.64px] border-b border-gray200 dark:border-black text-sm leading-5 text-gray500 dark:text-gray100;
+    @apply table-cell w-96 px-6 py-[20.64px] border-b border-gray-200 dark:border-black text-sm leading-5 text-gray-500 dark:text-gray-100;
 }
 
 .table__editable-cell--admin {
-    @apply w-96 table-cell px-6 py-3 border-b border-gray200;
+    @apply w-96 table-cell px-6 py-3 border-b border-gray-200;
+}
+
+.no-matches {
+    @apply text-center pt-7 text-lg font-medium text-black dark:text-white;
 }
 
 /* Users */
@@ -25,5 +29,5 @@
 
 /* Recipes */
 .recipe-table__header--admin {
-    @apply px-6 py-5 text-xs font-medium leading-4 tracking-wider text-left text-gray500 uppercase border-b border-gray200 table-cell dark:text-white dark:border-black;
+    @apply px-6 py-5 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 table-cell dark:text-white dark:border-black;
 }

@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User } from "server/entities/User";
 
+import { User } from "server/entities/User";
 import { verifyPassword } from "server/helpers/auth";
 import { getMikro } from "server/helpers/db";
 

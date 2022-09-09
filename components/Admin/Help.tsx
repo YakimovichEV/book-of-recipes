@@ -1,5 +1,5 @@
-import useTranslation from "next-translate/useTranslation";
 import React from "react";
+import useTranslation from "next-translate/useTranslation";
 
 export const Help: React.FC = () => {
     const { t } = useTranslation("help");

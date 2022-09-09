@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { NextPage } from "next";
 
-import { Button } from "components/Button/Button";
+import { Button } from "components/common";
 
-const NotFoundPage = () => {
+const NotFoundPage: NextPage = () => {
     return (
         <Fragment>
             <Head>
@@ -19,14 +20,14 @@ const NotFoundPage = () => {
                 <title>Page not found</title>
             </Head>
             <div className="text-center mt-16">
-                <span className=" text-9xl font-bold text-green lg:extra-font-size">
+                <span className=" text-9xl font-bold text-sacramento dark:text-white">
                     404
                 </span>
-                <h1 className=" my-5 text-xl font-bold text-green lg:text-4xl lg:my-10">
+                <h1 className=" my-5 text-xl font-bold text-sacramento lg:text-4xl lg:my-10 dark:text-white">
                     Oops, We can seem to find <br />
                     the page what you are looking for.
                 </h1>
-                <p className="mb-10 font-normal text-green w-72 mx-auto sm:w-96 lg:text-xl lg:w-2/3">
+                <p className="mb-10 font-normal text-sacramento w-72 mx-auto sm:w-96 lg:text-xl lg:w-2/3 dark:text-gray-300">
                     The page you are looking for might have been removed, had
                     its name changed, or is temporarily unavailable.
                 </p>

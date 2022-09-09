@@ -1,12 +1,26 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
+import { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 
-import { Header } from "components/Admin/Header";
-import { Aside } from "components/Admin/Aside";
-import AdminImg from "public/images/admin.png";
+import { Aside, Header } from "components/Admin";
 
-const Admin = () => {
+import AdminImg from "public/images/admin.png";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+
+const Admin: NextPage = () => {
+    const router = useRouter();
+
+    const { status } = useSession({
+        required: true,
+        onUnauthenticated() {
+            router.push("/recipes");
+        },
+    });
+
+    console.log(status);
+
     const { t } = useTranslation("admin");
 
     return (

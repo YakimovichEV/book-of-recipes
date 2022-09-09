@@ -2,16 +2,16 @@ input UserInput {
     email: String!
     password: String!
     name: String!
-    phoneNumber: String!
-    role: Role!
+    phoneNumber: String
+    role: Role
 }
 
 input UserUpdateInput {
     userId: ID!
     email: String!
     name: String!
-    phoneNumber: String!
-    role: Role!
+    phoneNumber: String
+    role: Role
 }
 
 extend type Mutation {

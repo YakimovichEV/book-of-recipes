@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
+import { NextPage } from "next";
 
-import { Header } from "components/Admin/Header";
-import { Aside } from "components/Admin/Aside";
+import { Aside, Header } from "components/Admin";
 import { AddRecipe } from "components/Admin/Recipes/AddRecipe";
 
-const AddRecipePage = () => {
+const AddRecipePage: NextPage = () => {
     return (
         <Fragment>
             <Header />

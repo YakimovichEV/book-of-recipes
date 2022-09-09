@@ -4,5 +4,7 @@
     "email": "Email",
     "phone": "Phone",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "no-matches": "No matches were found",
+    "add-user": "Add user"
 }
