@@ -21,6 +21,7 @@ import { ApolloContext } from "../../@types/graphql";
 import { GraphQLUpload } from "graphql-upload";
 import { UserWithFieldResolvers } from "./User/User";
 import { getCategoryList } from "./Category/queries/getCategoryList";
+import { recipeCategory } from "./Recipe/fieldResolvers/Recipe";
 
 export const ApolloResolvers: Resolvers = {
     Query: {
@@ -50,6 +51,9 @@ export const ApolloResolvers: Resolvers = {
             ApolloContext,
             UserWithFieldResolvers
         >["firstName"],
+    },
+    Recipe: {
+        category: recipeCategory,
     },
     Upload: GraphQLUpload,
 };

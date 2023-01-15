@@ -31,7 +31,7 @@ export class Category {
     parentCategory?: Category;
 
     @OneToMany(() => Category, (category) => category.parentCategory)
-    childCategories?: Category[];
+    childCategories: Category[] = [];
 
     @OneToMany(() => Recipe, (recipe) => recipe.category)
     recipes: Recipe[] = [];
