@@ -7,7 +7,7 @@ type User {
     id: ID!
     email: String!
     name: String!
-    firstName: String!
+    firstName: String! @CustomResolver
     role: Role
     phoneNumber: String
 }

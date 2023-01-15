@@ -1,5 +1,9 @@
 import { ApolloContext } from "../../../../@types/graphql";
-import { CategoryResolvers, Category } from "../../../generated/graphql";
+import {
+    CategoryResolvers,
+    Category,
+    MyResolvers,
+} from "../../../generated/graphql";
 
 type ResolverList = CategoryResolvers<ApolloContext, Category>;
 
@@ -23,7 +27,7 @@ export const recipes: ResolverList["recipes"] = async (
     return category.recipes || [];
 };
 
-export const parentCategory: ResolverList["parentCategory"] = async (
+export const parentCategory: MyResolvers["Category"]["parentCategory"] = async (
     category,
     {},
     { em },

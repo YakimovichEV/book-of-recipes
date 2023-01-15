@@ -5,3 +5,5 @@ export const appConfig = {
     IS_PRODUCTION: process.env.NODE_ENV === "production",
     CLIENT_URL: process.env.NEXTAUTH_URL,
 } as const;
+
+// check types

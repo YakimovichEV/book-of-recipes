@@ -1,4 +1,9 @@
 import { WithFieldResolvers } from "../helpers";
 import { User } from "../../generated/graphql";
 
-export type UserWithFieldResolvers = WithFieldResolvers<User, "firstName">;
+export type UserFieldResolversNames = "firstName";
+
+export type UserWithFieldResolvers = WithFieldResolvers<
+    User,
+    UserFieldResolversNames
+>;

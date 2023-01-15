@@ -3,7 +3,7 @@ type Category {
     name: String!
     description: String!
     image: String!
-    parentCategory: Category
+    parentCategory: Category @CustomResolver
     childCategories: [Category]!
     recipes: [Recipe]!
 }

@@ -1,5 +1,4 @@
-import { Resolvers, UserResolvers } from "../generated/graphql";
-import { Hello } from "./HelloWorld/queries/Hello";
+import { MyResolvers, QueryResolvers, Resolvers } from "../generated/graphql";
 import { createUser } from "./User/mutations/createUser";
 import { updateUser } from "./User/mutations/updateUser";
 import { deleteUser } from "./User/mutations/deleteUser";
@@ -17,22 +16,28 @@ import {
     parentCategory,
     recipes,
 } from "./Category/fieldResolvers/Category";
-import { ApolloContext } from "../../@types/graphql";
 import { GraphQLUpload } from "graphql-upload";
-import { UserWithFieldResolvers } from "./User/User";
 import { getCategoryList } from "./Category/queries/getCategoryList";
 import { recipeCategory } from "./Recipe/fieldResolvers/Recipe";
 
-export const ApolloResolvers: Resolvers = {
-    Query: {
-        hello: Hello,
-        getUserList,
-        getRecipeList,
-        getRecipe,
-        getCategory,
-        getCategoryList,
-        me: getMe,
-    },
+const key: keyof Required<Resolvers>["User"] = "firstName";
+
+console.log(key);
+
+// export type MyResolvers = {
+//     Category: { parentCategory: MyType };
+// };
+const Query: QueryResolvers = {
+    getUserList,
+    getRecipeList,
+    getRecipe,
+    getCategory,
+    getCategoryList,
+    me: getMe,
+};
+
+export const ApolloResolvers: MyResolvers = {
+    Query,
     Mutation: {
         createOrUpdateRecipe,
         deleteRecipe: deleteRecipe,
@@ -47,10 +52,7 @@ export const ApolloResolvers: Resolvers = {
         parentCategory,
     },
     User: {
-        firstName: firstName as UserResolvers<
-            ApolloContext,
-            UserWithFieldResolvers
-        >["firstName"],
+        firstName,
     },
     Recipe: {
         category: recipeCategory,
