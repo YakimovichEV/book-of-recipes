@@ -1,13 +1,3 @@
-type Category {
-    id: ID!
-    name: String!
-    description: String!
-    image: String!
-    parentCategory: Category @CustomResolver
-    childCategories: [Category]!
-    recipes: [Recipe]!
-}
-
 extend type Query {
     getCategoryList(search: String, page: Int): [Category]!
     getCategory(categoryId: ID!): Category

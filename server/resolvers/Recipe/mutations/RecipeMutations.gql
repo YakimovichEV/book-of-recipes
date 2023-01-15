@@ -1,16 +1,3 @@
-input RecipeInput {
-    name: String!
-    description: String!
-    image: Upload!
-    prepTime: Int!
-    cookingTime: Int!
-    serves: Int!
-    ingredients: [String!]!
-    instructions: [String!]!
-    tips: [String!]!
-    category: [ID!]!
-}
-
 extend type Mutation {
     createOrUpdateRecipe(recipe: RecipeInput!, recipeId: ID): Recipe!
     deleteRecipe(recipeId: ID!): Boolean!

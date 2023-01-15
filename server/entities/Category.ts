@@ -7,7 +7,7 @@ import {
     SerializedPrimaryKey,
 } from "@mikro-orm/core";
 import { ObjectId } from "mongodb";
-import { CategoryInput } from "../generated/graphql";
+import type { CategoryInput } from "../generated/graphql";
 import { Recipe } from "./Recipe";
 
 @Entity()

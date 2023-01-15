@@ -1,17 +1,3 @@
-enum Role {
-    admin
-    user
-}
-
-type User {
-    id: ID!
-    email: String!
-    name: String!
-    firstName: String! @CustomResolver
-    role: Role
-    phoneNumber: String
-}
-
 extend type Query {
     getUserList: [User!]!
     me: User

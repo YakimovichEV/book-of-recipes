@@ -1,4 +1,4 @@
-import { MyResolvers, QueryResolvers, Resolvers } from "../generated/graphql";
+import { MyResolvers, QueryResolvers } from "../generated/graphql";
 import { createUser } from "./User/mutations/createUser";
 import { updateUser } from "./User/mutations/updateUser";
 import { deleteUser } from "./User/mutations/deleteUser";
@@ -20,13 +20,6 @@ import { GraphQLUpload } from "graphql-upload";
 import { getCategoryList } from "./Category/queries/getCategoryList";
 import { recipeCategory } from "./Recipe/fieldResolvers/Recipe";
 
-const key: keyof Required<Resolvers>["User"] = "firstName";
-
-console.log(key);
-
-// export type MyResolvers = {
-//     Category: { parentCategory: MyType };
-// };
 const Query: QueryResolvers = {
     getUserList,
     getRecipeList,

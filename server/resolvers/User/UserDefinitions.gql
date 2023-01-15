@@ -1,0 +1,29 @@
+enum Role {
+    admin
+    user
+}
+
+type User {
+    id: ID!
+    email: String!
+    name: String!
+    firstName: String! @CustomResolver
+    role: Role
+    phoneNumber: String
+}
+
+input UserInput {
+    email: String!
+    password: String!
+    name: String!
+    phoneNumber: String
+    role: Role
+}
+
+input UserUpdateInput {
+    userId: ID!
+    email: String!
+    name: String!
+    phoneNumber: String
+    role: Role
+}
