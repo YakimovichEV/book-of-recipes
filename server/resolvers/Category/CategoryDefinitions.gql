@@ -1,0 +1,16 @@
+type Category {
+    id: ID!
+    name: String!
+    description: String!
+    image: String!
+    parentCategory: Category @CustomResolver
+    childCategories: [Category]! @CustomResolver
+    recipes: [Recipe]! @CustomResolver
+}
+
+input CategoryInput {
+    name: String!
+    description: String!
+    image: String!
+    parentCategory: ID
+}

@@ -1,8 +1,5 @@
-import { ApolloContext } from "../../../../@types/graphql";
-import { UserResolvers, User } from "../../../generated/graphql";
+import { MyResolvers } from "server/generated/graphql";
 
-export const firstName: UserResolvers<ApolloContext, User>["firstName"] = (
-    user,
-) => {
+export const firstName: MyResolvers["User"]["firstName"] = (user) => {
     return user.name.split(" ")[0] || "";
 };

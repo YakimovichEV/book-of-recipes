@@ -7,7 +7,7 @@ import {
     SerializedPrimaryKey,
 } from "@mikro-orm/core";
 import { ObjectId } from "mongodb";
-import { CategoryInput } from "../generated/graphql";
+import type { CategoryInput } from "../generated/graphql";
 import { Recipe } from "./Recipe";
 
 @Entity()
@@ -31,7 +31,7 @@ export class Category {
     parentCategory?: Category;
 
     @OneToMany(() => Category, (category) => category.parentCategory)
-    childCategories?: Category[];
+    childCategories: Category[] = [];
 
     @OneToMany(() => Recipe, (recipe) => recipe.category)
     recipes: Recipe[] = [];

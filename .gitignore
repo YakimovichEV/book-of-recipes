@@ -9,3 +9,5 @@ yarn-error.log
 YARN.txt
 /client/generated
 /server/generated
+
+plugins_out

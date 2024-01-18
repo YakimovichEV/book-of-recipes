@@ -31,3 +31,4 @@ generates:
             - "typescript"
             - "typescript-resolvers"
             - "typescript-typedefs.js"
+            - "plugins_out/CustomResolverDirective.js"

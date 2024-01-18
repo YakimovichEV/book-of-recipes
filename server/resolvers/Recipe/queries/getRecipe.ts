@@ -6,5 +6,7 @@ export const getRecipe: QueryResolvers["getRecipe"] = async (
     { recipeId },
     { em },
 ) => {
+    console.log(em.findOne(Recipe, { id: recipeId }));
+
     return em.findOne(Recipe, { id: recipeId });
 };
